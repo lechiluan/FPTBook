@@ -17,13 +17,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                @Html.ActionLink("FPT Book", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("About us", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact us", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -32,9 +33,61 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+
+        <footer class="footer">
+            <div class="container-fluid bg-grey">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <a href="index.php"><img src="images/atnlogo.gif" alt="MobileWorld Shop" class="logo"></a>
+                    </div>
+                    <div class="col-sm-3">
+                        <h3>CONTACT US</h3>
+                        <p>
+                            <span class="glyphicon glyphicon-map-marker"></span><a hhref="https://goo.gl/maps/ecZmU9Fx3ewnY4W26" target="_blank">
+                                &nbsp;160 30/4 Stress, Xuan Khanh Ward, Ninh Kieu District, Can Tho City
+                        </p></a>
+                        <p>
+                            <span class="glyphicon glyphicon-phone"></span><a href="tel:0386363677">
+                                &nbsp; Phone:
+                                0386.36.36.77
+                        </p></a>
+                        <p>
+                            <span class="glyphicon glyphicon-envelope"></span><a href="mailto:luanlcgcc19023@fpt.edu.vn">
+                                &nbsp;
+                                Luanlcgcc19023@fpt.edu.vn
+                        </p></a>
+                        <p>
+                            <i class="fa fa-facebook-square"></i><a href="https://www.facebook.com/chiluanIT/" target="_blank">
+                                </i>
+                                &nbsp; Facebook: ATN Store
+                            </a>
+                        </p>
+                        <p>
+                            <i class="fa fa-youtube-play"></i><a href="https://www.youtube.com/" target="_blank">
+                                </i>
+                                &nbsp;Youtube: ATN Store
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col-sm-3">
+                        <h3>LINK</h3>
+                        <h4><a href="index.php">Home</a></h4>
+                        <h4><a href="?page=aboutus">About Us</a></h4>
+                        <h4><a href="?page=contactus">Contact Us</a></h4>
+                        <h4><a href="?page=feedback">Feedback</a></h4>
+                    </div>
+                    <div class="col-sm-3">
+                        <h3>CATEGORIES</h3>
+                        <h4><a href="?page=science">Science</a></h4>
+                        <h4><a href="?page=lego">Lego</a></h4>
+                        <h4><a href="?page=vehicles">Vehicles</a></h4>
+                        <h4><a href="?page=ae">Architects & Engineers</a></h4>
+                        <h4><a href="?page=allproduct">All Product</a></h4>
+                    </div>
+                </div>
+            </div>
         </footer>
+        <p Align="center"><i><b>ATN Store ©2021 All rights reserved. Website design is developed by Le Chi Luan</b></i>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

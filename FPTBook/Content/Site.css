@@ -22,3 +22,14 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.about-text {
+    text-align: justify;
+    font-size: large;
+}
+
+.about-section {
+    padding: 50px;
+    text-align: center;
+    color: black;
+}
