@@ -204,6 +204,7 @@
     <Content Include="Logo\FPTBookLogo.png" />
     <Content Include="Logo\FPTBookLogo_NoBack.png" />
     <Content Include="Logo\FPTlogosmall.png" />
+    <Content Include="Logo\ImageaboutFPTBook.jpg" />
     <Content Include="Logo\Libaryfpt.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
