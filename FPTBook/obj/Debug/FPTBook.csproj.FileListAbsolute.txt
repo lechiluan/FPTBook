@@ -106,3 +106,8 @@ E:\GitHub\FPTBook\FPTBook\obj\Debug\FPTBook.csproj.CoreCompileInputs.cache
 E:\GitHub\FPTBook\FPTBook\obj\Debug\FPTBook.csproj.CopyComplete
 E:\GitHub\FPTBook\FPTBook\obj\Debug\FPTBook.dll
 E:\GitHub\FPTBook\FPTBook\obj\Debug\FPTBook.pdb
+E:\GitHub\FPTBook\FPTBook\bin\EPPlus.dll
+E:\GitHub\FPTBook\FPTBook\bin\Microsoft.IO.RecyclableMemoryStream.dll
+E:\GitHub\FPTBook\FPTBook\bin\System.ComponentModel.Annotations.dll
+E:\GitHub\FPTBook\FPTBook\bin\EPPlus.xml
+E:\GitHub\FPTBook\FPTBook\bin\Microsoft.IO.RecyclableMemoryStream.xml
