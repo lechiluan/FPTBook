@@ -26,8 +26,25 @@
             height: 240px;
         }
 
-        h3 {
+        .footer-h3 {
             color: white;
+        }
+
+        .footer-h4 {
+            color: dodgerblue;
+        }
+
+        #footer-h4 {
+            color: dodgerblue;
+        }
+
+        .footer-author {
+            color: red;
+        }
+
+        .logotop {
+            width: 109px;
+            height: 56px;
         }
     </style>
 
@@ -41,7 +58,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("FPT Book", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <class class="navbar-brand"></class><a href="@Url.Action("Index","Home")">
+                    <img src="~/Logo/FPTlogosmall.png" alt="MobileWorld Shop" class="logotop">
+                </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -53,18 +72,21 @@
             </div>
         </div>
     </div>
+
+    @*Body of website *@
     <div class="container body-content">
         @RenderBody()
         <hr />
     </div>
+
     <footer class="footer">
         <div class="container-fluid bg-grey">
             <div class="row">
                 <div class="col-sm-3">
                     <a href="#"><img src="~/Logo/FPTBookLogo_NoBack.png" alt="FPT Book" class="logo"></a>
                 </div>
-                <div class="col-sm-4">
-                    <h3>CONTACT US</h3>
+                <div class="col-sm-4" id="footer-h4">
+                    <h3 class="footer-h3">CONTACT US</h3>
                     <p>
                         <span class="glyphicon glyphicon-map-marker"></span><a href="https://goo.gl/maps/ecZmU9Fx3ewnY4W26" target="_blank">
                             &nbsp;160 30/4 Stress, Xuan Khanh Ward, Ninh Kieu District, Can Tho City
@@ -92,23 +114,23 @@
                     </p>
                 </div>
                 <div class="col-sm-2">
-                    <h3>LINK</h3>
-                    <h4>@Html.ActionLink("Home", "Index", "Home")</h4>
-                    <h4>@Html.ActionLink("About us", "About", "Home")</h4>
-                    <h4>@Html.ActionLink("Contact us", "Contact", "Home")</h4>
+                    <h3 class="footer-h3">OUR LINK</h3>
+                    <h4 class="footer-h4">@Html.ActionLink("Home", "Index", "Home")</h4>
+                    <h4 class="footer-h4">@Html.ActionLink("About us", "About", "Home")</h4>
+                    <h4 class="footer-h4">@Html.ActionLink("Contact us", "Contact", "Home")</h4>
                 </div>
                 <div class="col-sm-3">
-                    <h3>CATEGORIES</h3>
-                    <h4><a href="#">Category 1</a></h4>
-                    <h4><a href="#">Category 2</a></h4>
-                    <h4><a href="#">Category 3</a></h4>
-                    <h4><a href="#">Category 4</a></h4>
-                    <h4><a href="#">All Books</a></h4>
+                    <h3 class="footer-h3">CATEGORIES</h3>
+                    <h4 class="footer-h4"><a href="#">Category 1</a></h4>
+                    <h4 class="footer-h4"><a href="#">Category 2</a></h4>
+                    <h4 class="footer-h4"><a href="#">Category 3</a></h4>
+                    <h4 class="footer-h4"><a href="#">Category 4</a></h4>
+                    <h4 class="footer-h4"><a href="#">All Books</a></h4>
                 </div>
             </div>
         </div>
         <div>
-            <p align="center"><b><i>FPT Book &copy; @DateTime.Now.Year All rights reserved. Website design is developed by Le Chi Luan</i></b></p>
+            <p class="footer-author" align="center"><b><i>FPT Book &copy; @DateTime.Now.Year All rights reserved. Website design is developed by Le Chi Luan</i></b></p>
         </div>
     </footer>
     @Scripts.Render("~/bundles/jquery")
