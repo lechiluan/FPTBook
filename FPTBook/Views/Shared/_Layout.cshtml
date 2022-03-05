@@ -15,6 +15,8 @@
     <script src="@Url.Content("~/Scripts/modernizr-1.7.min.js")"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    @*Slides*@
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
         .footer {
             background-color: black;
@@ -43,8 +45,8 @@
         }
 
         .logotop {
-            width: 109px;
-            height: 56px;
+            width: 120px;
+            height: 55px;
         }
     </style>
 
@@ -59,7 +61,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <class class="navbar-brand"></class><a href="@Url.Action("Index","Home")">
-                    <img src="~/Logo/FPTlogosmall.png" alt="MobileWorld Shop" class="logotop">
+                    <img src="~/Logo/LogoHeader.png" alt="MobileWorld Shop" class="logotop">
                 </a>
             </div>
             <div class="navbar-collapse collapse">
@@ -129,10 +131,10 @@
                 </div>
             </div>
         </div>
-        <div>
-            <p class="footer-author" align="center"><b><i>FPT Book &copy; @DateTime.Now.Year All rights reserved. Website design is developed by Le Chi Luan</i></b></p>
-        </div>
     </footer>
+    <div>
+        <p class="footer-author" align="center"><b><i>FPT Book &copy; @DateTime.Now.Year All rights reserved. Website design is developed by Le Chi Luan</i></b></p>
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

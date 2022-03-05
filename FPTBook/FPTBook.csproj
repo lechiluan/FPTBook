@@ -209,6 +209,7 @@
     <Content Include="Logo\FPTlogosmall.png" />
     <Content Include="Logo\ImageaboutFPTBook.jpg" />
     <Content Include="Logo\Libaryfpt.jpg" />
+    <Content Include="Logo\LogoHeader.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
