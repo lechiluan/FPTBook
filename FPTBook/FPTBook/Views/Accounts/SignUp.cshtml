@@ -1,0 +1,87 @@
+﻿
+
+@{ ViewBag.Title = "Sign - Up"; }
+
+@model FPTBook.Models.Account
+
+<section class="register-photo" style="background-image: url('https://i.pinimg.com/originals/5f/cc/80/5fcc80e2a77a4ce69467ea7f08e49fea.png'); background-size: 100% ">
+    <div class="form-container">
+        <div class="image-holder"></div>
+
+        @using (Html.BeginForm("SignUp", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", @style = "background: rgb(30,40,51);border-radius:0 50px 50px 0" }))
+        {
+            <h2 class="text-center" style="color: rgb(252,252,252);font-size: 29px;">Register</h2>
+
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+
+
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", placeholder = "Username", @autofocus = "", @required = "", @style = "margin-bottom: 6px;background: rgb(30,40,51);color: rgb(252,252,252);" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.EditorFor(model => model.Fullname, new { htmlAttributes = new { @class = "form-control", placeholder = "Fullname", @required = "", @style = "margin-bottom: 6px;background: rgb(30,40,51);color: rgb(252,252,252);" } })
+                @Html.ValidationMessageFor(model => model.Fullname, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password", @required = "", @style = "margin-bottom: 6px;background: rgb(30,40,51);color: rgb(252,252,252);" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Confirm Password", @required = "", @style = "margin-bottom: 6px;background: rgb(30,40,51);color: rgb(252,252,252);" } })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email", @required = "", @style = "margin-bottom: 6px;background: rgb(30,40,51);color: rgb(252,252,252);" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control", placeholder = "Phone number", @required = "", @style = "margin-bottom: 6px;background: rgb(30,40,51);color: rgb(252,252,252);" } })
+                @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Address", @required = "", @style = "margin-bottom: 6px;background: rgb(30,40,51);color: rgb(252,252,252);" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-primary d-block w-100" value="Register" style="background: rgb(66,42,160); border-radius: 25px" />
+                </div>
+
+                <i>@Html.ActionLink("Already have account. Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { @class = "already", @style = "color: rgb(161, 196, 231); " })</i>
+            </div>
+
+        }
+    </div>
+</section>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

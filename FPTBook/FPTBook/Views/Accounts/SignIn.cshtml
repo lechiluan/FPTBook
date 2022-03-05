@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "SignIn";
+}
+
+@model FPTBook.Models.Account
+
+<head>
+    <style>
+    </style>
+</head>
+<h1></h1>
+<body>
+    <div class="row">
+        <div class="col-md-12">
+            <section id="loginForm">
+                @using (Html.BeginForm("SignIn", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <h2>Wellcome to FPT Book. Please enter the correct information to sign in.</h2>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Username, new { @class = "col-md-5 control-label" })
+                        <div class="col-md-7">
+                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-5 control-label" })
+                        <div class="col-md-7">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-5 col-md-7">
+                            <input type="submit" value="Log in" class="btn btn-default" />
+                        </div>
+                    </div>
+                    <div class="col-md-offset-5">
+                        <p>
+                            <i>@Html.ActionLink("Do you have account? Sign up", "SignUp", "Account", routeValues: null, htmlAttributes: new { @class = "forgot", @style = "color: black;" })</i>
+                        </p>
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+</body>

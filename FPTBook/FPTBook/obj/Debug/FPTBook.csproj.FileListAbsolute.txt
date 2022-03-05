@@ -77,3 +77,7 @@ E:\GitHub\FPTBook\FPTBook\FPTBook\obj\Debug\FPTBook.csproj.CoreCompileInputs.cac
 E:\GitHub\FPTBook\FPTBook\FPTBook\obj\Debug\FPTBook.csproj.CopyComplete
 E:\GitHub\FPTBook\FPTBook\FPTBook\obj\Debug\FPTBook.dll
 E:\GitHub\FPTBook\FPTBook\FPTBook\obj\Debug\FPTBook.pdb
+E:\GitHub\FPTBook\FPTBook\FPTBook\bin\EntityFramework.dll
+E:\GitHub\FPTBook\FPTBook\FPTBook\bin\EntityFramework.SqlServer.dll
+E:\GitHub\FPTBook\FPTBook\FPTBook\bin\EntityFramework.xml
+E:\GitHub\FPTBook\FPTBook\FPTBook\bin\EntityFramework.SqlServer.xml
