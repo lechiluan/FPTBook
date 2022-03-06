@@ -116,60 +116,58 @@
         <hr />
     </div>
     @*Footer*@
-    <footer class="footer">
-        <div class="container-fluid bg-grey">
-            <div class="row">
-                <div class="col-sm-3">
-                    <a href="#"><img src="~/Logo/FPTBookLogo_NoBack.png" alt="FPT Book" class="logo"></a>
-                </div>
-                <div class="col-sm-4" id="footer-h4">
-                    <h3 class="footer-h3">CONTACT US</h3>
-                    <p>
-                        <span class="glyphicon glyphicon-map-marker"></span><a href="https://goo.gl/maps/ecZmU9Fx3ewnY4W26" target="_blank">
-                            &nbsp;160 30/4 Stress, Xuan Khanh Ward, Ninh Kieu District, Can Tho City
-                        </a>
-                    </p>
-                    <p>
-                        <span class="glyphicon glyphicon-phone"></span><a href="tel:0386363677">
-                            &nbsp; Phone: 0386.36.36.77
-                        </a>
-                    </p>
-                    <p>
-                        <span class="glyphicon glyphicon-envelope"></span><a href="mailto:luanlcgcc19023@fpt.edu.vn">
-                            &nbsp; Luanlcgcc19023@fpt.edu.vn
-                        </a>
-                    </p>
-                    <p>
-                        <i class="fa fa-facebook-square"></i><a href="https://www.facebook.com/chiluanIT/" target="_blank">
-                            &nbsp; Facebook: FPT Book
-                        </a>
-                    </p>
-                    <p>
-                        <i class="fa fa-youtube-play"></i><a href="https://www.youtube.com/channel/UCFb_pvi_csLFUcNfFaDYSLw" target="_blank">
-                            &nbsp;Youtube: FPT Book
-                        </a>
-                    </p>
-                </div>
-                <div class="col-sm-2">
-                    <h3 class="footer-h3">OUR LINK</h3>
-                    <h4 class="footer-h4">@Html.ActionLink("Home", "Index", "Home")</h4>
-                    <h4 class="footer-h4">@Html.ActionLink("About us", "About", "Home")</h4>
-                    <h4 class="footer-h4">@Html.ActionLink("Contact us", "Contact", "Home")</h4>
-                </div>
-                <div class="col-sm-3">
-                    <h3 class="footer-h3">CATEGORIES</h3>
-                    <h4 class="footer-h4"><a href="#">Category 1</a></h4>
-                    <h4 class="footer-h4"><a href="#">Category 2</a></h4>
-                    <h4 class="footer-h4"><a href="#">Category 3</a></h4>
-                    <h4 class="footer-h4"><a href="#">Category 4</a></h4>
-                    <h4 class="footer-h4"><a href="#">All Books</a></h4>
-                </div>
+<footer class="footer">
+    <div class="container-fluid bg-grey">
+        <div class="row">
+            <div class="col-sm-3">
+                <a href="#"><img src="~/Logo/FPTBookLogo_NoBack.png" alt="FPT Book" class="logo"></a>
+            </div>
+            <div class="col-sm-4" id="footer-h4">
+                <h3 class="footer-h3">CONTACT US</h3>
+                <p>
+                    <span class="glyphicon glyphicon-map-marker"></span><a href="https://goo.gl/maps/ecZmU9Fx3ewnY4W26" target="_blank">
+                        &nbsp;160 30/4 Stress, Xuan Khanh Ward, Ninh Kieu District, Can Tho City
+                    </a>
+                </p>
+                <p>
+                    <span class="glyphicon glyphicon-phone"></span><a href="tel:0386363677">
+                        &nbsp; Phone: 0386.36.36.77
+                    </a>
+                </p>
+                <p>
+                    <span class="glyphicon glyphicon-envelope"></span><a href="mailto:luanlcgcc19023@fpt.edu.vn">
+                        &nbsp; Luanlcgcc19023@fpt.edu.vn
+                    </a>
+                </p>
+                <p>
+                    <i class="fa fa-facebook-square"></i><a href="https://www.facebook.com/chiluanIT/" target="_blank">
+                        &nbsp; Facebook: FPT Book
+                    </a>
+                </p>
+                <p>
+                    <i class="fa fa-youtube-play"></i><a href="https://www.youtube.com/channel/UCFb_pvi_csLFUcNfFaDYSLw" target="_blank">
+                        &nbsp;Youtube: FPT Book
+                    </a>
+                </p>
+            </div>
+            <div class="col-sm-2">
+                <h3 class="footer-h3">OUR LINK</h3>
+                <h4 class="footer-h4">@Html.ActionLink("Home", "Index", "Home")</h4>
+                <h4 class="footer-h4">@Html.ActionLink("About us", "About", "Home")</h4>
+                <h4 class="footer-h4">@Html.ActionLink("Contact us", "Contact", "Home")</h4>
+            </div>
+            <div class="col-sm-3">
+                <h3 class="footer-h3">CATEGORIES</h3>
+                <h4 class="footer-h4"><a href="#">Category 1</a></h4>
+                <h4 class="footer-h4"><a href="#">Category 2</a></h4>
+                <h4 class="footer-h4"><a href="#">Category 3</a></h4>
+                <h4 class="footer-h4"><a href="#">Category 4</a></h4>
+                <h4 class="footer-h4"><a href="#">All Books</a></h4>
             </div>
         </div>
-    </footer>
-    <div>
-        <p class="footer-author" align="center"><b><i>FPT Book &copy; @DateTime.Now.Year All rights reserved. Website design is developed by Le Chi Luan</i></b></p>
     </div>
+    <p class="footer-author" align="center"><b><i>FPT Book &copy; @DateTime.Now.Year All rights reserved. Website design is developed by Le Chi Luan</i></b></p>
+</footer>
 
     @*Button go to the top*@
     <button onclick="topFunction()" id="myBtn" title="Go to top"

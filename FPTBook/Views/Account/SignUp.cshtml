@@ -15,7 +15,7 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.Username, new { @class = "col-md-5 control-label" })
                 <div class="col-md-7">
-                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @placeholder = "Username", @required = "" })
                     @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -23,14 +23,14 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.Password, new { @class = "col-md-5 control-label" })
                 <div class="col-md-7">
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password", @required = "" })
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-5 control-label" })
                 <div class="col-md-7">
-                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "ConfirmPassword", @required = "" })
                     @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -39,7 +39,7 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.Fullname, new { @class = "col-md-5 control-label" })
                 <div class="col-md-7">
-                    @Html.TextBoxFor(m => m.Fullname, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Fullname, new { @class = "form-control", @placeholder = "FullName", @required = "" })
                     @Html.ValidationMessageFor(m => m.Fullname, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -47,7 +47,7 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.Email, new { @class = "col-md-5 control-label" })
                 <div class="col-md-7">
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email", @required = "" })
                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -55,21 +55,21 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.Telephone, new { @class = "col-md-5 control-label" })
                 <div class="col-md-7">
-                    @Html.TextBoxFor(m => m.Telephone, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Telephone, new { @class = "form-control", @placeholder = "Telephone", @required = "" })
                     @Html.ValidationMessageFor(m => m.Telephone, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Address, new { @class = "col-md-5 control-label" })
                 <div class="col-md-7">
-                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "Address", @required = "" })
                     @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-offset-5 col-md-7">
-                    <input type="submit" class="btn btn-primary" value="Register" />
-                    <input type="submit" name="btnCancel" class="btn btn-primary" id="btnLogin" value="Cancel" />
+                    <input type="submit" class="btn btn-primary" value="Sign Up" />
+                    <a class="btn btn-primary" role="button" href="@Url.Action("Index", "Home")">Cancel</a>
                 </div>
             </div>
             <div class="col-md-offset-5">
@@ -85,6 +85,4 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-
-
 

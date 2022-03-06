@@ -1,0 +1,69 @@
+﻿@model FPTBook.Models.Account
+@{
+    ViewBag.Title = "Update Account";
+}
+
+@if (ViewBag.Success != null)
+{
+    <script type="text/javascript">
+    window.onload = function () {
+        alert("@ViewBag.Success");
+    };
+    </script>
+}
+
+<section>
+    <div class="form-container">
+        <div class="image-holder"></div>
+        @using (Html.BeginForm("UpdateAccount", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <h2 align="center">Update Account Information</h2>
+            <hr />
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <strong>@Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "col-md-5 control-label" })</strong>
+                <div class="col-md-7">
+                    @Html.TextBoxFor(u => u.Username, new { @class = "form-control", @readonly = "" })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Fullname, new { @class = "col-md-5 control-label" })
+                <div class="col-md-7">
+                    @Html.TextBoxFor(u => u.Fullname, new { @class = "form-control", @placeholder = "Fullname", @autofocus = "", @required = "" })
+                    @Html.ValidationMessageFor(model => model.Fullname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "col-md-5 control-label" })
+                <div class="col-md-7">
+                    @Html.TextBoxFor(u => u.Email, new { @class = "form-control", @placeholder = "Fullname", @autofocus = "", @required = "" })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Telephone, new { @class = "col-md-5 control-label" })
+                <div class="col-md-7">
+                    @Html.TextBoxFor(u => u.Telephone, new { @class = "form-control", @placeholder = "Fullname", @autofocus = "", @required = "" })
+                    @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Address, new { @class = "col-md-5 control-label" })
+                <div class="col-md-7">
+                    @Html.TextBoxFor(u => u.Address, new { @class = "form-control", @placeholder = "Fullname", @autofocus = "", @required = "" })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-5 col-md-7">
+                    <input class="btn btn-primary" type="submit" value="Update" />
+                    @Html.ActionLink("Change Password", "ChangePass", "Account", null, new { @class = "btn btn-primary", @style = "" })
+                    <a class="btn btn-primary" role="button" href="@Url.Action("Index", "Home")">Cancel</a>
+                </div>
+            </div>
+        }
+    </div>
+</section>

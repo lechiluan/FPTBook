@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="~/Logo/LogoTitle_Noback.png"
+          type="image/x-icon">
+    <title>FPT Book - @ViewBag.Title </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="@Url.Content(" ~ /Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content(" ~ /Scripts/jquery-1.5.1.min.js")"></script>
+    <script src="@Url.Content(" ~ /Scripts/modernizr-1.7.min.js")"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    @*Slides*@
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .footer {
+            background-color: black;
+            color: white;
+        }
+
+        .logo {
+            width: 240px;
+            height: 240px;
+        }
+
+        .footer-h3 {
+            color: white;
+        }
+
+        .footer-h4 {
+            color: dodgerblue;
+        }
+
+        #footer-h4 {
+            color: dodgerblue;
+        }
+
+        .footer-author {
+            color: red;
+        }
+
+        .logotop {
+            width: 145px;
+            height: 55px;
+        }
+    </style>
+
+</head>
+<body>
+    @*Header*@
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <class class="navbar-brand"></class><a href="@Url.Action(" Index","AdminAccount")">
+                    <img src="~/Logo/LogoHeader.png" alt="MobileWorld Shop" class="logotop">
+                </a>
+            </div>
+
+            <div class="navbar-collapse collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home - Management", "Index", "AdminAccount")</li>
+                    <li>@Html.ActionLink("Category", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Author", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Publisher", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Book", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Orders", "Index", "Home")</li>
+                    <li>@Html.ActionLink("OrderDetail", "Index", "Home")</li>
+                    <li>@Html.ActionLink("User Account", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Feedback", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Statistic", "Index", "Home")</li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    @if(Session["Admin"] != null)
+                    {
+                        <li><a href="@Url.Action("UpdateAccount", "Account" )"><span class="glyphicon glyphicon-user"></span> Hi, @Session["AdminName"]</a></li>
+                        <li><a href="@Url.Action("SignOut","Account")"><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    @*Body of website *@
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+    @*Footer*@
+    <footer class="footer">
+        <div class="container-fluid bg-grey">
+            <div class="row">
+                <div class="col-sm-3">
+                    <a href="#"><img src="~/Logo/FPTBookLogo_NoBack.png" alt="FPT Book" class="logo"></a>
+                </div>
+                <div class="col-sm-4" id="footer-h4">
+                    <h3 class="footer-h3">CONTACT US</h3>
+                    <p>
+                        <span class="glyphicon glyphicon-map-marker"></span><a href="https://goo.gl/maps/ecZmU9Fx3ewnY4W26" target="_blank">
+                            &nbsp;160 30/4 Stress, Xuan Khanh Ward, Ninh Kieu District, Can Tho City
+                        </a>
+                    </p>
+                    <p>
+                        <span class="glyphicon glyphicon-phone"></span><a href="tel:0386363677">
+                            &nbsp; Phone: 0386.36.36.77
+                        </a>
+                    </p>
+                    <p>
+                        <span class="glyphicon glyphicon-envelope"></span><a href="mailto:luanlcgcc19023@fpt.edu.vn">
+                            &nbsp; Luanlcgcc19023@fpt.edu.vn
+                        </a>
+                    </p>
+                    <p>
+                        <i class="fa fa-facebook-square"></i><a href="https://www.facebook.com/chiluanIT/" target="_blank">
+                            &nbsp; Facebook: FPT Book
+                        </a>
+                    </p>
+                    <p>
+                        <i class="fa fa-youtube-play"></i><a href="https://www.youtube.com/channel/UCFb_pvi_csLFUcNfFaDYSLw" target="_blank">
+                            &nbsp;Youtube: FPT Book
+                        </a>
+                    </p>
+                </div>
+                <div class="col-sm-2">
+                    <h3 class="footer-h3">OUR LINK</h3>
+                    <h4 class="footer-h4">@Html.ActionLink("Home", "Index", "Home")</h4>
+                    <h4 class="footer-h4">@Html.ActionLink("About us", "About", "Home")</h4>
+                    <h4 class="footer-h4">@Html.ActionLink("Contact us", "Contact", "Home")</h4>
+                </div>
+                <div class="col-sm-3">
+                    <h3 class="footer-h3">CATEGORIES</h3>
+                    <h4 class="footer-h4"><a href="#">Category 1</a></h4>
+                    <h4 class="footer-h4"><a href="#">Category 2</a></h4>
+                    <h4 class="footer-h4"><a href="#">Category 3</a></h4>
+                    <h4 class="footer-h4"><a href="#">Category 4</a></h4>
+                    <h4 class="footer-h4"><a href="#">All Books</a></h4>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div>
+        <p class="footer-author" align="center"><b><i>FPT Book &copy; @DateTime.Now.Year All rights reserved. Website design is developed by Le Chi Luan</i></b></p>
+    </div>
+
+    @*Button go to the top*@
+    <button onclick="topFunction()" id="myBtn" title="Go to top"
+            style="display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: black;
+            color: white;
+            cursor:pointer;
+            padding: 7px;
+            border-radius: 25px;
+            font-size: 30px; ">
+        🔼
+    </button>
+    <script>
+        mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+
+    </script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
