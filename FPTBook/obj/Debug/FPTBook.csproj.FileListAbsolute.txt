@@ -159,8 +159,8 @@ E:\GitHub\FPTBook\FPTBook\bin\System.Web.WebPages.Razor.xml
 E:\GitHub\FPTBook\FPTBook\bin\Newtonsoft.Json.xml
 E:\GitHub\FPTBook\FPTBook\bin\Antlr3.Runtime.pdb
 E:\GitHub\FPTBook\FPTBook\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\GitHub\FPTBook\FPTBook\obj\Debug\FPTBook.csproj.AssemblyReference.cache
 E:\GitHub\FPTBook\FPTBook\obj\Debug\FPTBook.csproj.CoreCompileInputs.cache
 E:\GitHub\FPTBook\FPTBook\obj\Debug\FPTBook.csproj.CopyComplete
 E:\GitHub\FPTBook\FPTBook\obj\Debug\FPTBook.dll
 E:\GitHub\FPTBook\FPTBook\obj\Debug\FPTBook.pdb
+E:\GitHub\FPTBook\FPTBook\obj\Debug\FPTBook.csproj.AssemblyReference.cache

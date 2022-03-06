@@ -6,7 +6,7 @@
     <div class="form-container">
         <div class="image-holder"></div>
 
-        @using (Html.BeginForm("SignUp", "Accounts", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        @using (Html.BeginForm("SignUp", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
             @Html.AntiForgeryToken()
             <h2 align="center">Wellcome to FPT Book. Create a new account.</h2>
@@ -75,7 +75,7 @@
             <div class="col-md-offset-5">
                 <p>
 
-                    <i>Already have account. @Html.ActionLink("Sign In", "SignIn", "Accounts", routeValues: null, htmlAttributes: new { @style = "color: red;" })</i>
+                    <i>Already have account. @Html.ActionLink("Sign In", "SignIn", "Account", routeValues: null, htmlAttributes: new { @style = "color: red;" })</i>
                 </p>
             </div>
         }

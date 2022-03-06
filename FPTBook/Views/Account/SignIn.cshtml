@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-md-12">
             <section id="loginForm">
-                @using (Html.BeginForm("SignIn", "Accounts", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                @using (Html.BeginForm("SignIn", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
                     <h2 align="center">Wellcome to FPT Book. Sign In.</h2>
@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-md-offset-5">
                         <p>
-                            <i>Do you have account? @Html.ActionLink("Sign up", "SignUp", "Accounts", routeValues: null, htmlAttributes: new { @class = "forgot", @style = "color: red;" })</i>
+                            <i>Do you have account? @Html.ActionLink("Sign up", "SignUp", "Account", routeValues: null, htmlAttributes: new { @class = "forgot", @style = "color: red;" })</i>
                         </p>
                     </div>
                 }

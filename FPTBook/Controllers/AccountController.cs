@@ -12,12 +12,14 @@ using System.Text;
 
 namespace FPTBook.Controllers
 {
-    public class AccountsController : Controller
+    public class AccountController : Controller
     {
         private FPTBookDBContext _db = new FPTBookDBContext();
 
+        
         public ActionResult SignUp()
         {
+            // Return page SignUp
             return View();
         }
 
@@ -27,17 +29,21 @@ namespace FPTBook.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Check Exits
                 var usernameCheckExists = _db.Accounts.FirstOrDefault(u => u.Username == _account.Username);
                 var emailCheckExists = _db.Accounts.FirstOrDefault(e => e.Email == _account.Email);
                 var phoneCheckExists = _db.Accounts.FirstOrDefault(p => p.Telephone == _account.Telephone);
 
+                // Check input
                 if (usernameCheckExists == null)
                 {
                     if (emailCheckExists == null)
                     {
                         if (phoneCheckExists == null)
                         {
+                            // Add data into database
                             _account.Password = PasswordMD5(_account.Password);
+                            // ??????
                             //_account.ConfirmPassword = PasswordMD5(_account.ConfirmPassword);
                             _db.Configuration.ValidateOnSaveEnabled = false;
                             _db.Accounts.Add(_account);
@@ -183,7 +189,7 @@ namespace FPTBook.Controllers
             return View();
         }
 
-        public ActionResult Logout()
+        public ActionResult SignOut()
         {
             Session.Clear();//remove session
             return RedirectToAction("Index", "Home");
