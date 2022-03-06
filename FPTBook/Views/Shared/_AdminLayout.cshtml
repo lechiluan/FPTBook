@@ -8,9 +8,9 @@
     <title>FPT Book - @ViewBag.Title </title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="@Url.Content(" ~ /Content/Site.css")" rel="stylesheet" type="text/css" />
-    <script src="@Url.Content(" ~ /Scripts/jquery-1.5.1.min.js")"></script>
-    <script src="@Url.Content(" ~ /Scripts/modernizr-1.7.min.js")"></script>
+    <link href="@Url.Content(" ~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content(" ~/Scripts/jquery-1.5.1.min.js")"></script>
+    <script src="@Url.Content(" ~/Scripts/modernizr-1.7.min.js")"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     @*Slides*@
@@ -59,7 +59,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <class class="navbar-brand"></class><a href="@Url.Action(" Index","AdminAccount")">
+                <class class="navbar-brand"></class><a href="@Url.Action("Index","AdminAccount")">
                     <img src="~/Logo/LogoHeader.png" alt="MobileWorld Shop" class="logotop">
                 </a>
             </div>
@@ -91,8 +91,11 @@
 
     @*Body of website *@
     <div class="container body-content">
+        <br/>
         @RenderBody()
         <hr />
+        <br/>
+        <br/>
     </div>
     @*Footer*@
     <footer class="footer">

@@ -202,6 +202,8 @@
     <Content Include="Views\Shared\ErrorCart.cshtml" />
     <Content Include="Views\Account\UpdateAccount.cshtml" />
     <Content Include="Views\AdminAccount\Index.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\SendFeedback.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

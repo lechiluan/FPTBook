@@ -106,10 +106,6 @@ namespace FPTBook.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Feedback>()
-                .Property(e => e.FeedbackID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Feedback>()
                 .Property(e => e.Username)
                 .IsUnicode(false);
 

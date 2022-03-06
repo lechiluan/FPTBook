@@ -9,8 +9,7 @@ namespace FPTBook.Models
     [Table("Feedback")]
     public partial class Feedback
     {
-        [StringLength(20)]
-        public string FeedbackID { get; set; }
+        public int FeedbackID { get; set; }
 
         [Required]
         [StringLength(20)]
@@ -28,7 +27,6 @@ namespace FPTBook.Models
         [StringLength(1000)]
         public string Message { get; set; }
 
-        [Required]
         public DateTime DateSend { get; set; }
 
         public virtual Account Account { get; set; }

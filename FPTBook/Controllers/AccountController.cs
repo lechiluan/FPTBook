@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FPTBook.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,7 +7,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using FPTBook.Models;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -148,7 +148,7 @@ namespace FPTBook.Controllers
             return View(_account);
         }
 
-        public ActionResult ChangePass()
+        public ActionResult ChangePassword()
         {
             var user = Session["Username"];
             if (user == null)
@@ -160,7 +160,7 @@ namespace FPTBook.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ChangePass(Account account)
+        public ActionResult ChangePassword(Account account)
         {
             var user = Session["Username"];
 
