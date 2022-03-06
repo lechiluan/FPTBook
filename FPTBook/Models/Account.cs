@@ -18,6 +18,7 @@ namespace FPTBook.Models
         }
 
         [Key]
+        [Required]
         [StringLength(20)]
         [Display(Name = "Username")]
         public string Username { get; set; }

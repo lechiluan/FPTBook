@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "SignIn";
+    ViewBag.Title = "Sign In";
 }
 
 @model FPTBook.Models.Account
@@ -14,12 +14,13 @@
     <div class="row">
         <div class="col-md-12">
             <section id="loginForm">
-                @using (Html.BeginForm("SignIn", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                @using (Html.BeginForm("SignIn", "Accounts", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
-                    <h2>Wellcome to FPT Book. Please enter the correct information to sign in.</h2>
+                    <h2 align="center">Wellcome to FPT Book. Sign In.</h2>
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
                     <div class="form-group">
                         @Html.LabelFor(m => m.Username, new { @class = "col-md-5 control-label" })
                         <div class="col-md-7">
@@ -27,6 +28,7 @@
                             @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
                         </div>
                     </div>
+
                     <div class="form-group">
                         @Html.LabelFor(m => m.Password, new { @class = "col-md-5 control-label" })
                         <div class="col-md-7">
@@ -34,14 +36,16 @@
                             @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                         </div>
                     </div>
+
                     <div class="form-group">
                         <div class="col-md-offset-5 col-md-7">
-                            <input type="submit" value="Log in" class="btn btn-default" />
+                            <input type="submit" value="Log in" class="btn btn-primary" />
+                            <input type="submit" name="btnCancel" class="btn btn-primary" id="btnLogin" value="Cancel" />
                         </div>
                     </div>
                     <div class="col-md-offset-5">
                         <p>
-                            <i>@Html.ActionLink("Do you have account? Sign up", "SignUp", "Account", routeValues: null, htmlAttributes: new { @class = "forgot", @style = "color: black;" })</i>
+                            <i>Do you have account? @Html.ActionLink("Sign up", "SignUp", "Accounts", routeValues: null, htmlAttributes: new { @class = "forgot", @style = "color: red;" })</i>
                         </p>
                     </div>
                 }
