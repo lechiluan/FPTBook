@@ -10,22 +10,22 @@ using FPTBook.Models;
 
 namespace FPTBook.Controllers
 {
-    public class AuthorsController : Controller
+    public class PaymentsController : Controller
     {
         private FPTBookDBContext db = new FPTBookDBContext();
 
-        // GET: Authors
+        // GET: Payment
         public ActionResult Index()
         {
             if (Session["Admin"] != null)
             {
-                return View(db.Authors.ToList().OrderBy(a => a.AuthorID));
+                return View(db.Payments.ToList().OrderBy(a => a.PaymentID));
             }
             return View("Error");
 
         }
 
-        // GET: Authors/Details/AuthorID
+        // GET: Payments/Details/PaymentID
         public ActionResult Details(string id)
         {
             if (Session["Admin"] != null)
@@ -34,19 +34,17 @@ namespace FPTBook.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Author author = db.Authors.Find(id);
-                if (author == null)
+                Payment payment = db.Payments.Find(id);
+                if (payment == null)
                 {
                     return HttpNotFound();
                 }
-                return View(author);
+                return View(payment);
             }
             return View("Error");
-
-
         }
 
-        // GET: Authors/Add
+        // GET: Payments/Add
         public ActionResult Add()
         {
             if (Session["Admin"] != null)
@@ -56,22 +54,22 @@ namespace FPTBook.Controllers
             return View("Error");
         }
 
-        // POST: Authors/Add        
+        // POST: Payments/Add        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Add([Bind(Include = "AuthorID,AuthorName,Description")] Author author)
+        public ActionResult Add([Bind(Include = "PaymentID,PaymentName")] Payment payment)
         {
             if (ModelState.IsValid)
             {
-                db.Authors.Add(author);
+                db.Payments.Add(payment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(author);
+            return View(payment);
         }
 
-        // GET: Authors/Update/AuthorID
+        // GET: Payments/Update/PaymentID
         public ActionResult Update(string id)
         {
             if (Session["Admin"] != null)
@@ -80,32 +78,32 @@ namespace FPTBook.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Author author = db.Authors.Find(id);
-                if (author == null)
+                Payment payment = db.Payments.Find(id);
+                if (payment == null)
                 {
                     return HttpNotFound();
                 }
-                return View(author);
+                return View(payment);
             }
             return View("Error");
 
         }
 
-        // POST: Authors/Update/AuthorID
+        // POST: Payments/Update/PaymentID
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Update([Bind(Include = "AuthorID,AuthorName,Description")] Author author)
+        public ActionResult Update([Bind(Include = "PaymentID,PaymentName")] Payment payment)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(author).State = EntityState.Modified;
+                db.Entry(payment).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(author);
+            return View(payment);
         }
 
-        // GET: Authors/Delete/AuthorID
+        // GET: Payments/Delete/PaymentID
         public ActionResult Delete(string id)
         {
             if (Session["Admin"] != null)
@@ -114,24 +112,23 @@ namespace FPTBook.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Author author = db.Authors.Find(id);
-                if (author == null)
+                Payment payment = db.Payments.Find(id);
+                if (payment == null)
                 {
                     return HttpNotFound();
                 }
-                return View(author);
+                return View(payment);
             }
             return View("Error");
-
         }
 
-        // POST: Authors/Delete/AuthorID
+        // POST: Payments/Delete/PaymentID
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Author author = db.Authors.Find(id);
-            db.Authors.Remove(author);
+            Payment payment = db.Payments.Find(id);
+            db.Payments.Remove(payment);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

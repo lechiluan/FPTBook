@@ -12,7 +12,7 @@ namespace FPTBook.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Book()
         {
-            Order_Details = new HashSet<Order_Details>();
+            OrderDetail = new HashSet<OrderDetail>();
         }
 
         [Key]
@@ -64,6 +64,6 @@ namespace FPTBook.Models
         public virtual Publisher Publisher { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order_Details> Order_Details { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetail { get; set; }
     }
 }

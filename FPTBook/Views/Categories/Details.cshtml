@@ -1,0 +1,38 @@
+﻿@model FPTBook.Models.Category
+
+@{
+    ViewBag.Title = "Category Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2 align="center"><b>Category Details</b></h2>
+<ul class="list-group" style="margin-left: 5%;margin-right: 5%;border-radius: 23px;">
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.CategoryID)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.CategoryID)</span>
+    </li>
+
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.CategoryName)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.CategoryName)</span>
+    </li>
+
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Description)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.Description)</span>
+    </li>
+
+    <li class="list-group-item">
+        <div>
+            @Html.ActionLink("Update", "Update", new { id = Model.CategoryID }, new { @class = "btn btn-primary" })
+            <a class="btn btn-primary" role="button" href="@Url.Action("Index", "Categories")">Cancel</a>
+        </div>
+    </li>
+</ul>

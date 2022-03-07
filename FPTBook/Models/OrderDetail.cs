@@ -6,7 +6,7 @@ namespace FPTBook.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Order_Details
+    public partial class OrderDetail
     {
         [Key]
         [Column(Order = 0)]

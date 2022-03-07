@@ -1,0 +1,65 @@
+﻿@model FPTBook.Models.Book
+
+@{
+    ViewBag.Title = "Add Book";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@if (ViewBag.Success != null)
+{
+    <script type="text/javascript">
+    window.onload = function () {
+        alert("@ViewBag.Success");
+    };
+    </script>
+}
+
+<body>
+    <section>
+        <div class="form-container">
+            <div class="image-holder"></div>
+            <div class="card-body">
+                @using (Html.BeginForm("Add", "Books", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <h2 align="center"><b>Add Book</b></h2>
+                    <hr />
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <strong>@Html.LabelFor(model => model.BookID, htmlAttributes: new { @class = "col-md-5 control-label" })</strong>
+                                <div class="col-md-7">
+                                    @Html.TextBoxFor(u => u.BookID, new { @class = "form-control", @required = "", @placeholder = "Enter Author ID" })
+                                    @Html.ValidationMessageFor(model => model.BookID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <strong>@Html.LabelFor(model => model.BookName, htmlAttributes: new { @class = "col-md-5 control-label" })</strong>
+                                <div class="col-md-7">
+                                    @Html.TextBoxFor(u => u.BookName, new { @class = "form-control", @required = "", @placeholder = "Enter Author Name" })
+                                    @Html.ValidationMessageFor(model => model.BookName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <strong>@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "col-md-5 control-label" })</strong>
+                                <div class="col-md-7">
+                                    @Html.TextBoxFor(u => u.Description, new { @class = "form-control", @required = "", @placeholder = "Enter Description" })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-5 col-md-7">
+                                    <input class="btn btn-primary" type="submit" value="Add new author" />
+                                    <a class="btn btn-primary" role="button" href="@Url.Action("Index", "Authors")">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</body>

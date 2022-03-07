@@ -1,0 +1,38 @@
+﻿@model FPTBook.Models.Publisher
+
+@{
+    ViewBag.Title = "Publisher Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2 align="center"><b>Publisher Details</b></h2>
+<ul class="list-group" style="margin-left: 5%;margin-right: 5%;border-radius: 23px;">
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.PublisherID)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.PublisherID)</span>
+    </li>
+
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.PublisherName)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.PublisherName)</span>
+    </li>
+
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Description)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.Description)</span>
+    </li>
+
+    <li class="list-group-item">
+        <div>
+            @Html.ActionLink("Update", "Update", new { id = Model.PublisherID }, new { @class = "btn btn-primary" })
+            <a class="btn btn-primary" role="button" href="@Url.Action("Index", "Publishers")">Cancel</a>
+        </div>
+    </li>
+</ul>

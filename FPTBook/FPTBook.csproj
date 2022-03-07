@@ -130,6 +130,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminAccountController.cs" />
+    <Compile Include="Controllers\BooksController .cs" />
+    <Compile Include="Controllers\PaymentsController.cs" />
+    <Compile Include="Controllers\PublishersController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -144,7 +148,7 @@
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\FPTBookDBContext.cs" />
     <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\Order_Details.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Publisher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -214,6 +218,26 @@
     <Content Include="Views\Authors\Index.cshtml" />
     <Content Include="Views\AdminAccount\UpdateAccount.cshtml" />
     <Content Include="Views\AdminAccount\ChangePassword.cshtml" />
+    <Content Include="Views\Categories\Update.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Add.cshtml" />
+    <Content Include="Views\Publishers\Add.cshtml" />
+    <Content Include="Views\Publishers\Delete.cshtml" />
+    <Content Include="Views\Publishers\Details.cshtml" />
+    <Content Include="Views\Publishers\Index.cshtml" />
+    <Content Include="Views\Publishers\Update.cshtml" />
+    <Content Include="Views\Payments\Add.cshtml" />
+    <Content Include="Views\Payments\Delete.cshtml" />
+    <Content Include="Views\Payments\Details.cshtml" />
+    <Content Include="Views\Payments\Index.cshtml" />
+    <Content Include="Views\Payments\Update.cshtml" />
+    <Content Include="Views\Books\Add.cshtml" />
+    <Content Include="Views\Books\Delete.cshtml" />
+    <Content Include="Views\Books\Details.cshtml" />
+    <Content Include="Views\Books\Index.cshtml" />
+    <Content Include="Views\Books\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

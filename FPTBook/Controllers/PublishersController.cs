@@ -10,22 +10,21 @@ using FPTBook.Models;
 
 namespace FPTBook.Controllers
 {
-    public class AuthorsController : Controller
+    public class PublishersController : Controller
     {
         private FPTBookDBContext db = new FPTBookDBContext();
-
-        // GET: Authors
+        // GET: Publishers
         public ActionResult Index()
         {
             if (Session["Admin"] != null)
             {
-                return View(db.Authors.ToList().OrderBy(a => a.AuthorID));
+                return View(db.Publishers.ToList().OrderBy(a => a.PublisherID));
             }
             return View("Error");
 
         }
 
-        // GET: Authors/Details/AuthorID
+        // GET: Publishers/Details/PublisherID
         public ActionResult Details(string id)
         {
             if (Session["Admin"] != null)
@@ -34,19 +33,19 @@ namespace FPTBook.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Author author = db.Authors.Find(id);
-                if (author == null)
+                Publisher publisher = db.Publishers.Find(id);
+                if (publisher == null)
                 {
                     return HttpNotFound();
                 }
-                return View(author);
+                return View(publisher);
             }
             return View("Error");
 
 
         }
 
-        // GET: Authors/Add
+        // GET: Publishers/Add
         public ActionResult Add()
         {
             if (Session["Admin"] != null)
@@ -56,22 +55,22 @@ namespace FPTBook.Controllers
             return View("Error");
         }
 
-        // POST: Authors/Add        
+        // POST: Publishers/Add        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Add([Bind(Include = "AuthorID,AuthorName,Description")] Author author)
+        public ActionResult Add([Bind(Include = "PublisherID,PublisherName,Description")] Publisher publisher)
         {
             if (ModelState.IsValid)
             {
-                db.Authors.Add(author);
+                db.Publishers.Add(publisher);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(author);
+            return View(publisher);
         }
 
-        // GET: Authors/Update/AuthorID
+        // GET: Publishers/Update/PublisherID
         public ActionResult Update(string id)
         {
             if (Session["Admin"] != null)
@@ -80,32 +79,32 @@ namespace FPTBook.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Author author = db.Authors.Find(id);
-                if (author == null)
+                Publisher publisher = db.Publishers.Find(id);
+                if (publisher == null)
                 {
                     return HttpNotFound();
                 }
-                return View(author);
+                return View(publisher);
             }
             return View("Error");
 
         }
 
-        // POST: Authors/Update/AuthorID
+        // POST: Publishers/Update/PublisherID
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Update([Bind(Include = "AuthorID,AuthorName,Description")] Author author)
+        public ActionResult Update([Bind(Include = "PublisherID,PublisherName,Description")] Publisher publisher)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(author).State = EntityState.Modified;
+                db.Entry(publisher).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(author);
+            return View(publisher);
         }
 
-        // GET: Authors/Delete/AuthorID
+        // GET: Publishers/Delete/PublisherID
         public ActionResult Delete(string id)
         {
             if (Session["Admin"] != null)
@@ -114,24 +113,24 @@ namespace FPTBook.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Author author = db.Authors.Find(id);
-                if (author == null)
+                Publisher publisher = db.Publishers.Find(id);
+                if (publisher == null)
                 {
                     return HttpNotFound();
                 }
-                return View(author);
+                return View(publisher);
             }
             return View("Error");
 
         }
 
-        // POST: Authors/Delete/AuthorID
+        // POST: Publisher/Delete/PublisherID
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Author author = db.Authors.Find(id);
-            db.Authors.Remove(author);
+            Publisher publisher = db.Publishers.Find(id);
+            db.Publishers.Remove(publisher);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

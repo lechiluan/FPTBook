@@ -17,7 +17,7 @@ namespace FPTBook.Models
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
-        public virtual DbSet<Order_Details> Order_Details { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetail { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<Publisher> Publishers { get; set; }
@@ -88,7 +88,7 @@ namespace FPTBook.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Book>()
-                .HasMany(e => e.Order_Details)
+                .HasMany(e => e.OrderDetail)
                 .WithRequired(e => e.Book)
                 .WillCascadeOnDelete(false);
 
@@ -125,7 +125,7 @@ namespace FPTBook.Models
                 .Property(e => e.Message)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Order_Details>()
+            modelBuilder.Entity<OrderDetail>()
                 .Property(e => e.BookID)
                 .IsUnicode(false);
 

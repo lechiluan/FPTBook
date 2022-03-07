@@ -10,22 +10,20 @@ using FPTBook.Models;
 
 namespace FPTBook.Controllers
 {
-    public class AuthorsController : Controller
+    public class CategoriesController : Controller
     {
         private FPTBookDBContext db = new FPTBookDBContext();
-
-        // GET: Authors
+        // GET: Categories
         public ActionResult Index()
         {
             if (Session["Admin"] != null)
             {
-                return View(db.Authors.ToList().OrderBy(a => a.AuthorID));
+                return View(db.Categories.ToList().OrderBy(a => a.CategoryID));
             }
             return View("Error");
-
         }
 
-        // GET: Authors/Details/AuthorID
+        // GET: Categories/Details/CategoryID
         public ActionResult Details(string id)
         {
             if (Session["Admin"] != null)
@@ -34,19 +32,17 @@ namespace FPTBook.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Author author = db.Authors.Find(id);
-                if (author == null)
+                Category category = db.Categories.Find(id);
+                if (category == null)
                 {
                     return HttpNotFound();
                 }
-                return View(author);
+                return View(category);
             }
             return View("Error");
-
-
         }
 
-        // GET: Authors/Add
+        // GET: Categories/Add
         public ActionResult Add()
         {
             if (Session["Admin"] != null)
@@ -56,22 +52,22 @@ namespace FPTBook.Controllers
             return View("Error");
         }
 
-        // POST: Authors/Add        
+        // POST: Categories/Add        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Add([Bind(Include = "AuthorID,AuthorName,Description")] Author author)
+        public ActionResult Add([Bind(Include = "CategoryID,CategoryName,Description")] Category category)
         {
             if (ModelState.IsValid)
             {
-                db.Authors.Add(author);
+                db.Categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(author);
+            return View(category);
         }
 
-        // GET: Authors/Update/AuthorID
+        // GET: Categories/Update/CategoryID
         public ActionResult Update(string id)
         {
             if (Session["Admin"] != null)
@@ -80,32 +76,32 @@ namespace FPTBook.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Author author = db.Authors.Find(id);
-                if (author == null)
+                Category category = db.Categories.Find(id);
+                if (category == null)
                 {
                     return HttpNotFound();
                 }
-                return View(author);
+                return View(category);
             }
             return View("Error");
 
         }
 
-        // POST: Authors/Update/AuthorID
+        // POST: Categories/Update/CategoryID
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Update([Bind(Include = "AuthorID,AuthorName,Description")] Author author)
+        public ActionResult Update([Bind(Include = "CategoryID,CategoryName,Description")] Category category)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(author).State = EntityState.Modified;
+                db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(author);
+            return View(category);
         }
 
-        // GET: Authors/Delete/AuthorID
+        // GET: Categories/Delete/CategoryID
         public ActionResult Delete(string id)
         {
             if (Session["Admin"] != null)
@@ -114,24 +110,24 @@ namespace FPTBook.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Author author = db.Authors.Find(id);
-                if (author == null)
+                Category category = db.Categories.Find(id);
+                if (category == null)
                 {
                     return HttpNotFound();
                 }
-                return View(author);
+                return View(category);
             }
             return View("Error");
 
         }
 
-        // POST: Authors/Delete/AuthorID
+        // POST: Categories/Delete/CategoryID
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Author author = db.Authors.Find(id);
-            db.Authors.Remove(author);
+            Category category = db.Categories.Find(id);
+            db.Categories.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
