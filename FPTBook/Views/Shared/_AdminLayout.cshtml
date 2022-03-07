@@ -47,7 +47,6 @@
             height: 55px;
         }
     </style>
-
 </head>
 <body>
     @*Header*@
@@ -66,23 +65,30 @@
 
             <div class="navbar-collapse collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home - Management", "Index", "AdminAccount")</li>
-                    <li>@Html.ActionLink("Category", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Author", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Publisher", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Book", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Orders", "Index", "Home")</li>
-                    <li>@Html.ActionLink("OrderDetail", "Index", "Home")</li>
-                    <li>@Html.ActionLink("User Account", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Feedback", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Statistic", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "AdminAccount")</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Store Management<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index","Categires")">Category Management</a></li>
+                            <li><a href="@Url.Action("Index","Authors")">Author Management</a></li>
+                            <li><a href="@Url.Action("Index","Publishers")">Publisher Management </a></li>
+                            <li><a href="@Url.Action("Index","Books")">Book Management</a></li>
+                            <li><a href="@Url.Action("Index","Orders")">Order Management</a></li>
+                            <li><a href="@Url.Action("Index","Order_Details")">Order Detail Management</a></li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("User Management", "Index", "AdminAccount")</li>
+                    <li>@Html.ActionLink("Feedback Management", "Index", "AdminAccount")</li>
+                    <li>@Html.ActionLink("Statistic", "Index", "AdminAccount")</li>
+                    <li>@Html.ActionLink("Payment Management", "Index", "AdminAccount")</li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
                     @if(Session["Admin"] != null)
                     {
-                        <li><a href="@Url.Action("UpdateAccount", "Account" )"><span class="glyphicon glyphicon-user"></span> Hi, @Session["AdminName"]</a></li>
-                        <li><a href="@Url.Action("SignOut","Account")"><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
+                        <li><a href="@Url.Action("UpdateAccount", "AdminAccount" )"><span class="glyphicon glyphicon-user"></span> Hi, @Session["Admin"]</a></li>
+                        <li><a href="@Url.Action("SignOut","AdminAccount")"><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
                     }
                 </ul>
             </div>

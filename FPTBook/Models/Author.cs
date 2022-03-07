@@ -14,15 +14,18 @@ namespace FPTBook.Models
         {
             Books = new HashSet<Book>();
         }
-
+        [Required]
         [StringLength(10)]
+        [Display(Name = "Author ID")]
         public string AuthorID { get; set; }
 
         [Required]
+        [Display(Name = "Author Name")]
         [StringLength(50)]
         public string AuthorName { get; set; }
 
         [Required]
+        [Display(Name ="Description")]
         [StringLength(1000)]
         public string Description { get; set; }
 

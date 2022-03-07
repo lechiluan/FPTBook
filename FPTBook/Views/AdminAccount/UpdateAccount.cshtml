@@ -1,6 +1,7 @@
 ﻿@model FPTBook.Models.Account
 @{
     ViewBag.Title = "Update Account";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 @if (ViewBag.Success != null)
@@ -16,7 +17,7 @@
     <section>
         <div class="form-container">
             <div class="image-holder"></div>
-            @using (Html.BeginForm("UpdateAccount", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            @using (Html.BeginForm("UpdateAccount", "AdminAccount", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 <h2 align="center"><b>Update Account Information</b></h2>
                 <hr />
@@ -61,8 +62,8 @@
                 <div class="form-group">
                     <div class="col-md-offset-5 col-md-7">
                         <input class="btn btn-primary" type="submit" value="Update" />
-                        @Html.ActionLink("Change Password", "ChangePassword", "Account", null, new { @class = "btn btn-primary", @style = "" })
-                        <a class="btn btn-primary" role="button" href="@Url.Action("Index", "Home")">Cancel</a>
+                        @Html.ActionLink("Change Password", "ChangePassword", "AdminAccount", null, new { @class = "btn btn-primary", @style = "" })
+                        <a class="btn btn-primary" role="button" href="@Url.Action("Index", "AdminAccount")">Cancel</a>
                     </div>
                 </div>
             }

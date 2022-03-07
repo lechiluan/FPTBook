@@ -15,7 +15,7 @@ namespace FPTBook.Models
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Author> Authors { get; set; }
         public virtual DbSet<Book> Books { get; set; }
-        public virtual DbSet<Caterory> Caterories { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<Order_Details> Order_Details { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
@@ -72,9 +72,13 @@ namespace FPTBook.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Book>()
-                .Property(e => e.CategoryID)
+                .Property(e => e.BookName)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Book>()
+                .Property(e => e.CategoryID)
+                .IsUnicode(false);
+                
             modelBuilder.Entity<Book>()
                 .Property(e => e.AuthorID)
                 .IsUnicode(false);
@@ -88,21 +92,21 @@ namespace FPTBook.Models
                 .WithRequired(e => e.Book)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Caterory>()
+            modelBuilder.Entity<Category>()
                 .Property(e => e.CategoryID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Caterory>()
+            modelBuilder.Entity<Category>()
                 .Property(e => e.CategoryName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Caterory>()
+            modelBuilder.Entity<Category>()
                 .Property(e => e.Description)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Caterory>()
+            modelBuilder.Entity<Category>()
                 .HasMany(e => e.Books)
-                .WithRequired(e => e.Caterory)
+                .WithRequired(e => e.Category)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Feedback>()

@@ -9,21 +9,27 @@ namespace FPTBook.Models
     [Table("Feedback")]
     public partial class Feedback
     {
+        [Key]
+        [Display(Name = "Feedback ID")]
         public int FeedbackID { get; set; }
 
         [Required]
+        [Display(Name = "Username")]
         [StringLength(20)]
         public string Username { get; set; }
 
         [Required]
+        [Display(Name = "Telephone")]
         [StringLength(20)]
         public string Telephone { get; set; }
 
         [Required]
+        [Display(Name = "Email")]
         [StringLength(50)]
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "Message")]
         [StringLength(1000)]
         public string Message { get; set; }
 

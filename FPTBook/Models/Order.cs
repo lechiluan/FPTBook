@@ -17,26 +17,35 @@ namespace FPTBook.Models
         public int OrderID { get; set; }
 
         [Required]
+        [Display(Name = "Username")]
         [StringLength(20)]
         public string Username { get; set; }
 
         [Required]
+        [Display(Name = "Telephone")]
         [StringLength(20)]
         public string Telephone { get; set; }
 
         [Required]
+        [Display(Name = "Full Name")]
         [StringLength(50)]
         public string Fullname { get; set; }
 
         [Required]
+        [Display(Name = "Delivery Address")]
         [StringLength(100)]
         public string DeliveyAddress { get; set; }
 
+        [Required]
+        [Display(Name = "Order Date")]
         public DateTime OrderDate { get; set; }
 
+        [Required]
+        [Display(Name = "Total Price")]
         public int TotalPrice { get; set; }
 
         [Required]
+        [Display(Name = "Payment ID")]
         [StringLength(10)]
         public string PaymentID { get; set; }
 

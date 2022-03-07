@@ -15,15 +15,19 @@ namespace FPTBook.Models
             Books = new HashSet<Book>();
         }
 
+        [Key]
         [StringLength(10)]
+        [Display(Name = "Publisher ID")]
         public string PublisherID { get; set; }
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Publisher Name")]
         public string PublisherName { get; set; }
 
         [Required]
         [StringLength(1000)]
+        [Display(Name = "Description")]
         public string Description { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

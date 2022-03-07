@@ -219,6 +219,7 @@ namespace FPTBook.Controllers
             return View();
         }
 
+        // Hash password with MD5
         public static string PasswordMD5(string str)
         {
             MD5 md5 = new MD5CryptoServiceProvider();

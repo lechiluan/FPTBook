@@ -19,7 +19,7 @@
         <div class="image-holder"></div>
         @using (Html.BeginForm("SendFeedback", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
-            <h2 align="center">Send us feedback. We will contact you as soon as possible.</h2>
+            <h2 align="center"><b>Send us feedback. We will contact you as soon as possible.</b></h2>
             <hr />
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -50,11 +50,10 @@
                 @Html.ValidationMessageFor(model => model.DateSend, "", new { @class = "text-danger" })
             </div>
 
-
             <div class="form-group">
                 <strong>@Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "col-md-5 control-label" })</strong>
                 <div class="col-md-7">
-                    @Html.TextAreaFor(u => u.Message, new { @class = "form-control form-control-lg", @placeholder = "Your feedback", @required = "", @style = "margin-bottom: 5px;background: rgb(237,240,245);color: rgb(0,0,0);height:200px;border-radius:20px" })
+                    @Html.TextAreaFor(u => u.Message, new { @class = "form-control form-control-lg", @placeholder = "Your feedback", @required = "", @style = "height:150px;" })
                     @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
                 </div>  
             </div>

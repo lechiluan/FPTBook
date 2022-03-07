@@ -25,7 +25,7 @@ namespace AssignmentFPTBook.Controllers
             return View("Error");
         }
 
-        public ActionResult UpdateInfor()
+        public ActionResult UpdateAccount()
         {
             var admin = Session["Admin"];
 
@@ -45,7 +45,7 @@ namespace AssignmentFPTBook.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateInfor(Account account)
+        public ActionResult UpdateAccount(Account account)
         {
             if (ModelState.IsValid)
             {
@@ -62,10 +62,19 @@ namespace AssignmentFPTBook.Controllers
 
             return View(account);
         }
+        public ActionResult ChangePassword()
+        {
+            var user = Session["Admin"];
+            if (user == null)
+            {
+                Response.Write("<script>alert('Please sign in to continue!'); window.location='/Account/SignIn'</script>");
+            }
+            return View();
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ChangePass(Account account)
+        public ActionResult ChangePassword(Account account)
         {
             var user = Session["Admin"];
 
@@ -91,7 +100,7 @@ namespace AssignmentFPTBook.Controllers
 
                 ViewBag.aSuccess = "Password Change successfully";
             }
-            return View("UpdateInfor");
+            return View("Index");
         }
 
         public ActionResult ViewUserList()
@@ -147,7 +156,11 @@ namespace AssignmentFPTBook.Controllers
             return View("Error");
         }
 
-
+        public ActionResult SignOut()
+        {
+            Session.Clear();//remove session
+            return RedirectToAction("Index", "Home");
+        }
 
         public static string PasswordMD5(string str)
         {
