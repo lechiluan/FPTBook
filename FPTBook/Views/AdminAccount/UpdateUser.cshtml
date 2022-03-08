@@ -1,0 +1,114 @@
+﻿@model FPTBook.Models.Account
+
+@{
+    ViewBag.Title = "Update User";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@if (ViewBag.Success != null)
+{
+    <script type="text/javascript">
+    window.onload = function () {
+        alert("@ViewBag.Success");
+    };
+    </script>
+}
+<head>
+    <style>
+        .img-update {
+            width: 100px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="form-container">
+            <div class="image-holder"></div>
+            <div class="card-body">
+                @using (Html.BeginForm("UpdateUser", "AdminAccount", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <h2 align="center"><b>Update User</b></h2>
+                    <hr />
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Username)
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <strong>
+                                    @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "col-md-5 control-label" })
+                                </strong>
+                                <div class="col-md-7">
+                                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <strong>
+                                    @Html.LabelFor(model => model.Fullname, htmlAttributes: new { @class = "col-md-5 control-label" })
+                                </strong>
+                                <div class="col-md-7">
+                                    @Html.EditorFor(model => model.Fullname, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                                    @Html.ValidationMessageFor(model => model.Fullname, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <strong>
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-md-5 control-label" })
+                                </strong>
+                                <div class="col-md-7">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <strong>
+                                    @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "col-md-5 control-label" })
+                                </strong>
+                                <div class="col-md-7">
+                                    @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                                    @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <strong>
+                                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "col-md-5 control-label" })
+                                </strong>
+                                <div class="col-md-7">
+                                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <strong>
+                                    @Html.LabelFor(model => model.Role, htmlAttributes: new { @class = "col-md-5 control-label" })
+                                </strong>
+                                <div class="col-md-7">
+                                    @if (Model.Role == 1)
+                                    {
+                                        @Html.RadioButtonFor(model => model.Role, "1", new { @checked = true})<span>Admin</span>
+                                        @Html.RadioButtonFor(model => model.Role, "0", new {}) <span>User</span> }
+                                    else
+                                    {
+                                        @Html.RadioButtonFor(model => model.Role, "1", new {})<span>Admin</span>
+                                        @Html.RadioButtonFor(model => model.Role, "0", new {}) <span>User</span>}
+                                        @Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-5 col-md-7">
+                                    <input class="btn btn-primary" type="submit" value="Update" />
+                                    <a class="btn btn-primary" role="button" href="@Url.Action("ManageUser", "AdminAccount")">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</body>

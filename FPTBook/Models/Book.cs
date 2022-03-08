@@ -49,7 +49,7 @@ namespace FPTBook.Models
         [Display(Name ="Quantity")]
         public int Quantity { get; set; }
 
-        [Required(ErrorMessage = "Please choose file to upload.")]
+        
         [DataType(DataType.Upload)]
         [Display(Name ="Image")]
         public string Image { get; set; }
@@ -57,7 +57,7 @@ namespace FPTBook.Models
         [Required]
         [StringLength(1000)]
         [Display(Name ="Description")]
-        public string Description { get; set; }
+        public string Description { get; set; } 
 
         public virtual Author Author { get; set; }
 

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<FPTBook.Models.Account>
+
+@{
+    ViewBag.Title = "User management";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<head>
+    <style>
+        .img-index {
+            width: 80px;
+            height: 100px;
+        }
+    </style>
+</head>
+<div class="container-fluid">
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <h2 align="center"><b>User Account Management</b></h2>
+            <br />
+            <hr />
+        </div>
+        <table id="tablecategory" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">@Html.DisplayNameFor(model => model.Username)</th>
+                    <th style="text-align: center;">@Html.DisplayNameFor(model => model.Fullname)</th>
+                    <th style="text-align: center;">@Html.DisplayNameFor(model => model.Email)</th>
+                    <th style="text-align: center;">@Html.DisplayNameFor(model => model.Telephone)</th>
+                    <th style="text-align: center;">@Html.DisplayNameFor(model => model.Address)</th>
+                    <th style="text-align: center;">@Html.DisplayNameFor(model => model.Role)</th>
+                    <th style="text-align: center;">Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Username)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Fullname)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Telephone)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Address)</td>
+                        @if (item.Role == 1){
+                            <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">Admin</td>
+                        }
+                        else { 
+                            <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">User</td>
+                        }
+                        @*Don't can change role of admin*@
+                        @if (item.Username.Equals("admin")){
+                            <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">Administrator</td>
+                        }
+                        else{
+                            <td style="text-align: center;">
+                                <div>@Html.ActionLink(" ", "UpdateUser", new { id = item.Username }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px;color: rgb(1,1,1);" })</div>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

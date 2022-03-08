@@ -103,7 +103,7 @@ namespace FPTBook.Controllers
             return View("Index");
         }
 
-        public ActionResult ViewUserList()
+        public ActionResult ManageUser()
         {
             if (Session["Admin"] != null)
             {
@@ -112,7 +112,7 @@ namespace FPTBook.Controllers
             return View("Error");
         }
 
-        public ActionResult DetailUser(string id)
+        public ActionResult UpdateUser(string id)
         {
             if (Session["Admin"] != null)
             {
@@ -132,7 +132,7 @@ namespace FPTBook.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DetailUser(Account account)
+        public ActionResult UpdateUser(Account account)
         {
             if (ModelState.IsValid)
             {
@@ -142,7 +142,7 @@ namespace FPTBook.Controllers
 
                 db.SaveChanges();
 
-                return RedirectToAction("ViewUserList");
+                return RedirectToAction("ManageUser");
             }
             return View(account);
         }
