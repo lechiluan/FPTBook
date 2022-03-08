@@ -19,7 +19,7 @@ namespace FPTBook.Models
         [Key]
         [Required]
         [StringLength(10)]
-        [Display(Name ="Book ID")]
+        [Display(Name = "Book ID")]
         public string BookID { get; set; }
 
         [Required]
@@ -46,18 +46,18 @@ namespace FPTBook.Models
         public long Price { get; set; }
 
         [Required]
-        [Display(Name ="Quantity")]
+        [Display(Name = "Quantity")]
         public int Quantity { get; set; }
 
-        
+
         [DataType(DataType.Upload)]
-        [Display(Name ="Image")]
+        [Display(Name = "Image")]
         public string Image { get; set; }
 
         [Required]
         [StringLength(1000)]
-        [Display(Name ="Description")]
-        public string Description { get; set; } 
+        [Display(Name = "Description")]
+        public string Description { get; set; }
 
         public virtual Author Author { get; set; }
 

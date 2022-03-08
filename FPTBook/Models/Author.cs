@@ -25,7 +25,7 @@ namespace FPTBook.Models
         public string AuthorName { get; set; }
 
         [Required]
-        [Display(Name ="Description")]
+        [Display(Name = "Description")]
         [StringLength(1000)]
         public string Description { get; set; }
 

@@ -17,7 +17,7 @@ namespace FPTBook.Models
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
-        public virtual DbSet<OrderDetail> OrderDetail { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<Publisher> Publishers { get; set; }
@@ -72,13 +72,9 @@ namespace FPTBook.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Book>()
-                .Property(e => e.BookName)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Book>()
                 .Property(e => e.CategoryID)
                 .IsUnicode(false);
-                
+
             modelBuilder.Entity<Book>()
                 .Property(e => e.AuthorID)
                 .IsUnicode(false);

@@ -146,8 +146,8 @@
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
-    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\FPTBookDBContext.cs" />
     <Compile Include="Models\Order.cs" />

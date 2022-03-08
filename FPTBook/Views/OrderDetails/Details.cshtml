@@ -4,7 +4,14 @@
     ViewBag.Title = "Order Details";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
+<head>
+    <style>
+        .img-detail {
+            height: 150px;
+            width: 100px;
+        }
+    </style>
+</head>
 <h2 align="center"><b>Order Details</b></h2>
 <ul class="list-group" style="margin-left: 5%;margin-right: 5%;border-radius: 23px;">
     <li class="list-group-item">
@@ -38,6 +45,12 @@
             <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Subtotal)</label>
         </div>
         <span style="font-size: 19px;">@Html.DisplayFor(model => model.Subtotal)</span>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Book.Image)</label>
+        </div>
+        <img src="~/Image/@Model.Book.Image" class="img-detail" style="margin-left: 5%" />
     </li>
     <li class="list-group-item">
         <div>

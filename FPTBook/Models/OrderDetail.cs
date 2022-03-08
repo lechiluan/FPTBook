@@ -6,11 +6,12 @@ namespace FPTBook.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Table("OrderDetail")]
     public partial class OrderDetail
     {
         [Key]
         [Column(Order = 0)]
-        [Display(Name ="Order ID")]
+        [Display(Name = "Book Name")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int OrderID { get; set; }
 
