@@ -5,6 +5,7 @@ namespace FPTBook.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     [Table("Book")]
     public partial class Book
@@ -48,7 +49,8 @@ namespace FPTBook.Models
         [Display(Name ="Quantity")]
         public int Quantity { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please choose file to upload.")]
+        [DataType(DataType.Upload)]
         [Display(Name ="Image")]
         public string Image { get; set; }
 

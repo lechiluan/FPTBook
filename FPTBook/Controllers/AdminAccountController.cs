@@ -9,7 +9,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
-namespace AssignmentFPTBook.Controllers
+namespace FPTBook.Controllers
 {
     public class AdminAccountController : Controller
     {

@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using FPTBook.Models;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using FPTBook.Models;
 
-namespace AssignmentFPTBook.Controllers
+
+namespace FPTBook.Controllers
 {
     public class BooksController : Controller
     {
@@ -20,7 +18,7 @@ namespace AssignmentFPTBook.Controllers
         {
             if (Session["Admin"] != null)
             {
-                var books = db.Books.Include(b => b.Author).Include(b => b.Category).Include(b => b.Publisher);
+                var books = db.Books.Include(b => b.Category).Include(b => b.Author).Include(b => b.Publisher);
                 return View(books.ToList());
             }
             return View("Error");
@@ -45,25 +43,51 @@ namespace AssignmentFPTBook.Controllers
             return View("Error");
         }
 
-        // GET: Books/Create
+        // GET: Books/Add
         public ActionResult Add()
         {
             if (Session["Admin"] != null)
             {
-                ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName");
                 ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName");
+                ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName");
+                ViewBag.PublisherID = new SelectList(db.Publishers, "PublisherID", "PublisherName");
                 return View();
             }
             return View("Error");
         }
 
-        // POST: Books/Create
+        // POST: Books/Add
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Add(HttpPostedFileBase image, Book book)
         {
             if (ModelState.IsValid)
             {
+                /*try
+                {
+                    //Method 3. Save image to Avatars folder and save the name to DB 
+                    //name of upload file control in the view file have to be the same with attribute of member
+                    if (book.myfile != null)
+                    {
+                        string path = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(book.myfile.FileName));
+                        book.myfile.SaveAs(path);
+                    }
+                    book.Image = book.myfile.FileName;
+
+                    ViewBag.FileStatus = "File uploaded successfully.";
+                }
+                catch (Exception e)
+                {
+                    ViewBag.FileStatus = "Error while file uploading."; ;
+                }
+                ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", book.CategoryID);
+                ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName", book.AuthorID);
+                ViewBag.PublisherID = new SelectList(db.Publishers, "PublisherID", "PublisherName", book.PublisherID);
+                db.Books.Add(book);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(book);*/
                 if (image != null && image.ContentLength > 0)
                 {
                     string pic = Path.GetFileName(image.FileName);
@@ -78,16 +102,17 @@ namespace AssignmentFPTBook.Controllers
                 }
                 else
                 {
-                    ViewBag.Error = "............";
+                    ViewBag.Error = "...";
                     return View();
                 }
             }
-            ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName", book.AuthorID);
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", book.CategoryID);
+            ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName", book.AuthorID);
+            ViewBag.PublisherID = new SelectList(db.Publishers, "PublisherID", "PublisherName", book.PublisherID);
             return View(book);
         }
 
-        // GET: Books/Edit/BookID
+        // GET: Books/Update/BookID
         public ActionResult Update(string id)
         {
             if (Session["Admin"] != null)
@@ -96,20 +121,24 @@ namespace AssignmentFPTBook.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
+
                 Book book = db.Books.Find(id);
-                Session["imgPath"] = "~/Image/" + book.Image;
+
                 if (book == null)
                 {
                     return HttpNotFound();
                 }
-                ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName", book.AuthorID);
+                Session["imgPath"] = "~/Image/" + book.Image;
+
                 ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", book.CategoryID);
+                ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName", book.AuthorID);
+                ViewBag.PublisherID = new SelectList(db.Publishers, "PublisherID", "PublisherName", book.PublisherID);
                 return View(book);
             }
             return View("Error");
         }
 
-        // POST: Books/Edit/BookID
+        // POST: Books/Update/BookID
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Update(HttpPostedFileBase image, Book book)
@@ -137,8 +166,8 @@ namespace AssignmentFPTBook.Controllers
                 {
                     db.Books.Attach(book);
                     db.Entry(book).Property(a => a.BookName).IsModified = true;
-                    db.Entry(book).Property(a => a.AuthorID).IsModified = true;
                     db.Entry(book).Property(a => a.CategoryID).IsModified = true;
+                    db.Entry(book).Property(a => a.AuthorID).IsModified = true;
                     db.Entry(book).Property(a => a.PublisherID).IsModified = true;
                     db.Entry(book).Property(a => a.Quantity).IsModified = true;
                     db.Entry(book).Property(a => a.Price).IsModified = true;
@@ -148,8 +177,9 @@ namespace AssignmentFPTBook.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName", book.AuthorID);
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", book.CategoryID);
+            ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName", book.AuthorID);
+            ViewBag.PublisherID = new SelectList(db.Publishers, "PublisherID", "PublisherName", book.PublisherID);
             return View(book);
         }
 
@@ -163,11 +193,11 @@ namespace AssignmentFPTBook.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
                 Book book = db.Books.Find(id);
-                Session["imgOldPath"] = "~/Image/" + book.Image;
                 if (book == null)
                 {
                     return HttpNotFound();
                 }
+                Session["imgOldPath"] = "~/Image/" + book.Image;
                 return View(book);
             }
             return View("Error");
