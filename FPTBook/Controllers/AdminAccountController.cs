@@ -147,15 +147,6 @@ namespace FPTBook.Controllers
             return View(account);
         }
 
-        public ActionResult FeedbackView()
-        {
-            if (Session["Admin"] != null)
-            {
-                return View(db.Feedbacks.ToList().OrderByDescending(o => o.DateSend));
-            }
-            return View("Error");
-        }
-
         public ActionResult SignOut()
         {
             Session.Clear();//remove session

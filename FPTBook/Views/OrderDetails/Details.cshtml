@@ -1,0 +1,48 @@
+﻿@model FPTBook.Models.OrderDetail
+
+@{
+    ViewBag.Title = "Order Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 align="center"><b>Order Details</b></h2>
+<ul class="list-group" style="margin-left: 5%;margin-right: 5%;border-radius: 23px;">
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.OrderID)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.OrderID)</span>
+    </li>
+
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Book.BookName)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.Book.BookName)</span>
+    </li>
+
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Quantity)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.Quantity)</span>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Price)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.Price)</span>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Subtotal)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.Subtotal)</span>
+    </li>
+
+    <li class="list-group-item">
+        <div>
+            <a class="btn btn-primary" role="button" href="@Url.Action("Index", "OrderDetails")">Back</a>
+        </div>
+    </li>
+</ul>
