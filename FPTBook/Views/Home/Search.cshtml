@@ -1,0 +1,30 @@
+﻿@model IEnumerable<FPTBook.Models.Book>
+@{
+    ViewBag.Title = ViewBag.Search;
+}
+
+<div class="container">
+    <br />
+    <h3><u><b>Result</b></u></h3>
+</div>
+
+<div class="container">
+    <!--Display Book-->
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-3">
+            <div class="card">
+                <img src="~/Image/@item.Image" class="imgcart">
+                <h4 class="name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+                    <a href="@Url.Action("BookDetail", "Home", new { id = item.BookID})">@item.BookName</a>
+                </h4>
+                <div class="price">
+                    <ins>$@item.Price</ins>
+                </div>
+                <a href="@Url.Action("AddtoCart","Carts", new {id = item.BookID})" class="btn btn-primary addtocart">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart
+                </a>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<FPTBook.Models.Book>
+
+@{ ViewBag.Title = "Category View";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+<section class="bg-light" id="portfolio">
+
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+<div class="col-sm-6 col-md-4 col-lg-2 offset-xxl-6 portfolio-item">
+    <a class="portfolio-link" href="@Url.Action("BookDetail", "Home", new { id = item.BookID})">
+        <span class="hovertext" data-hover="@item.BookName"><img class="img-fluid" src="~/Image/@item.Image"></span>
+    </a>
+    <div class="portfolio-caption">
+        <p class="text-muted" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">@item.BookName</p>
+        <h5>@item.Price $</h5>
+        <a href="@Url.Action("AddtoCart","ShoppingCart", new {id = item.BookID})"><img data-bss-hover-animate="rubberBand" src="~/img/cart button.jpg" height="20%" width="80%" /></a>
+    </div>
+</div>            }
+        </div>
+    </div>
+</section>
+
+
