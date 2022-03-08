@@ -1,15 +1,14 @@
 ﻿@model IEnumerable<FPTBook.Models.OrderDetail>
 
 @{
-    ViewBag.Title = "Order Details";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
 
 <div class="container-fluid">
     <div class="card shadow">
         <div class="card-header py-3">
-            <h2 align="center"><b>OrderDetails Management</b></h2>
+            <h2 align="center"><b>Order Management</b></h2>
             <br />
             <hr />
         </div>
@@ -33,7 +32,6 @@
                         <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Quantity)</td>
                         <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Price)</td>
                         <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Subtotal)</td>
-
                         <td style="text-align: center;">
                             <div>@Html.ActionLink(" ", "Details", new { id = item.OrderID }, new { @class = "glyphicon glyphicon-info-sign", @style = "font-size: 20px;color: rgb(1,1,1);" })</div>
                         </td>

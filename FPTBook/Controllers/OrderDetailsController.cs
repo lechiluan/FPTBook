@@ -14,32 +14,26 @@ namespace FPTBook.Controllers
     {
         private FPTBookDBContext db = new FPTBookDBContext();
 
+        // GET: OrderDetails
         public ActionResult Index()
         {
-            if (Session["Admin"] != null)
-            {
-                var orederdetail = db.OrderDetail.Include(o => o.Order).Include(o => o.Book);
-                return View(orederdetail.ToList());
-            }
-            return View("Error");
+            var orderDetail = db.OrderDetail.Include(o => o.Book).Include(o => o.Order);
+            return View(orderDetail.ToList());
         }
 
+        // GET: OrderDetails/Details/5
         public ActionResult Details(int? id)
         {
-            if (Session["Admin"] != null)
+            if (id == null)
             {
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                OrderDetail orderDetail = db.OrderDetail.Find(id);
-                if (orderDetail == null)
-                {
-                    return HttpNotFound();
-                }
-                return View(orderDetail);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            return View("Error");
+            OrderDetail orderDetail = db.OrderDetail.Find(id);
+            if (orderDetail == null)
+            {
+                return HttpNotFound();
+            }
+            return View(orderDetail);
         }
 
         protected override void Dispose(bool disposing)
