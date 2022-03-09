@@ -11,9 +11,10 @@ namespace FPTBook.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Order()
         {
-            OrderDetail = new HashSet<OrderDetail>();
+            OrderDetails = new HashSet<OrderDetail>();
         }
 
+        [Display(Name = "Order ID")]
         public int OrderID { get; set; }
 
         [Required]
@@ -44,16 +45,9 @@ namespace FPTBook.Models
         [Display(Name = "Total Price")]
         public int TotalPrice { get; set; }
 
-        [Required]
-        [Display(Name = "Payment ID")]
-        [StringLength(10)]
-        public string PaymentID { get; set; }
-
         public virtual Account Account { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetail { get; set; }
-
-        public virtual Payment Payment { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

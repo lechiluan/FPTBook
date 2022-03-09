@@ -11,7 +11,7 @@ namespace FPTBook.Models
     {
         [Key]
         [Column(Order = 0)]
-        [Display(Name = "Book Name")]
+        [Display(Name = "Order ID")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int OrderID { get; set; }
 

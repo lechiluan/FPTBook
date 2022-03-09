@@ -11,7 +11,6 @@ namespace FPTBook.Models
             : base("name=FPTBook")
         {
         }
-
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Author> Authors { get; set; }
         public virtual DbSet<Book> Books { get; set; }
@@ -19,7 +18,6 @@ namespace FPTBook.Models
         public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<Publisher> Publishers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -136,23 +134,6 @@ namespace FPTBook.Models
             modelBuilder.Entity<Order>()
                 .Property(e => e.DeliveyAddress)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<Order>()
-                .Property(e => e.PaymentID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Payment>()
-                .Property(e => e.PaymentID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Payment>()
-                .Property(e => e.PaymentName)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Payment>()
-                .HasMany(e => e.Orders)
-                .WithRequired(e => e.Payment)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Publisher>()
                 .Property(e => e.PublisherID)
