@@ -1,7 +1,7 @@
 ﻿@model FPTBook.Models.Order
 
 @{
-    ViewBag.Title = "Order Details";
+    ViewBag.Title = "Order History Details";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -55,7 +55,7 @@
         <li class="list-group-item">
             <div>
                 <a class="btn btn-primary" role="button" href="#detail">Details</a>
-                <a class="btn btn-primary" role="button" href="@Url.Action("Index", "Orders")">Back</a>
+                <a class="btn btn-primary" role="button" href="@Url.Action("OrderHistory", "Carts")">Back</a>
             </div>
         </li>
     </ul>

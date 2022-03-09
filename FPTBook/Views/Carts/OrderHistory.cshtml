@@ -1,0 +1,35 @@
+﻿@model IEnumerable<FPTBook.Models.Order>
+
+@{
+    ViewBag.Title = "OrderHistory";
+}
+
+<div class="container-fluid" id="detail">
+    <div class="card-header py-3">
+        <h2 align="center"><b>Order History</b></h2>
+        <hr />
+    </div>
+    <table id="tablecategory" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th style="text-align: center;">Order ID</th>
+                <th style="text-align: center;">Order Date</th>
+                <th style="text-align: center;">Total Price</th>
+                <th style="text-align: center;">Detail</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="text-align: center;">@item.OrderID</td>
+                    <td style="text-align: center;">@item.OrderDate</td>
+                    <td style="text-align: center;">@item.TotalPrice</td>
+                    <td style="text-align: center;">
+                        <div>@Html.ActionLink(" ", "OrderHistoryDetails","Carts" ,new { id = item.OrderID }, new { @class = "glyphicon glyphicon-info-sign", @style = "font-size: 20px;color: rgb(1,1,1);" })</div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

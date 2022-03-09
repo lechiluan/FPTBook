@@ -84,13 +84,12 @@
                     </li>
                     <li>@Html.ActionLink("User Management", "ManageUser", "AdminAccount")</li>
                     <li>@Html.ActionLink("Feedback Management", "Index", "Feedbacks")</li>
-                    <li>@Html.ActionLink("Statistic", "Statistic", "AdminAccount")</li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
                     @if(Session["Admin"] != null)
                     {
-                        <li><a href="@Url.Action("UpdateAccount", "AdminAccount" )"><span class="glyphicon glyphicon-user"></span> Hi, @Session["Admin"]</a></li>
+                        <li><a href="@Url.Action("UpdateAccount", "AdminAccount" )"><span class="glyphicon glyphicon-user"></span> Hi, @Session["AdminName"]</a></li>
                         <li><a href="@Url.Action("SignOut","AdminAccount")"><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
                     }
                 </ul>
@@ -116,8 +115,8 @@
                 <div class="col-sm-4" id="footer-h4">
                     <h3 class="footer-h3">CONTACT US</h3>
                     <p>
-                        <span class="glyphicon glyphicon-map-marker"></span><a href="https://goo.gl/maps/ecZmU9Fx3ewnY4W26" target="_blank">
-                            &nbsp;160 30/4 Stress, Xuan Khanh Ward, Ninh Kieu District, Can Tho City
+                        <span class="glyphicon glyphicon-map-marker"></span><a href="https://goo.gl/maps/c4nD1ySUwRSHPq9q6" target="_blank">
+                            &nbsp;Old Royal Naval College, Park Row, London SE10 9LS, United Kingdom
                         </a>
                     </p>
                     <p>

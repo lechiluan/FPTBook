@@ -19,27 +19,8 @@ namespace FPTBook.Controllers
         {
             if (Session["Admin"] != null)
             {
-                var orderDetail = db.OrderDetails.Include(o => o.Book).Include(o => o.Order);
-                return View(orderDetail.ToList());
-            }
-            return View("Error");
-        }
-
-        // GET: OrderDetails/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (Session["Admin"] != null)
-            {
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                OrderDetail orderDetail = db.OrderDetails.Find(id);
-                if (orderDetail == null)
-                {
-                    return HttpNotFound();
-                }
-                return View(orderDetail);
+                var orderDetails = db.OrderDetails.Include(o => o.Order);
+                return View(orderDetails.ToList());
             }
             return View("Error");
         }

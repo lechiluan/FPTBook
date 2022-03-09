@@ -41,7 +41,6 @@ namespace FPTBook.Controllers
                 }
                 return RedirectToAction("ViewCart", "Carts");
             }
-
             return View("ErrorCart");
         }
 
@@ -98,7 +97,7 @@ namespace FPTBook.Controllers
                 _order.Username = form["cUsername"];
                 _order.DeliveyAddress = form["cAddress"];
                 _order.Telephone = form["cPhone"];
-                _order.Fullname = form["cName"];
+                _order.Fullname = form["cFullName"];
                 _order.TotalPrice = Convert.ToInt32(form["cTotalPrice"]);
                 db.Orders.Add(_order);
 
@@ -121,7 +120,7 @@ namespace FPTBook.Controllers
                 }
                 db.SaveChanges();
                 cart.ClearCart();
-                return RedirectToAction("CheckoutSuccess", "Carts", new { id = _order.OrderID });
+                return RedirectToAction("OrderSuccess", "Carts", new { id = _order.OrderID });
             }
             catch
             {
@@ -166,7 +165,7 @@ namespace FPTBook.Controllers
             return View("ErrorCart");
         }
 
-        public ActionResult OrderDetail(int? id)
+        public ActionResult OrderHistoryDetails(int? id)
         {
             if (Session["Username"] != null)
             {

@@ -54,7 +54,6 @@ namespace FPTBook.Controllers
         public ActionResult Search(string Search)
         {
             ViewBag.Search = Search;
-
             var books = db.Books.ToList().Where(s =>
             s.BookName.ToUpper().Contains(Search.ToUpper()) ||
                  s.Author.AuthorName.ToUpper().Contains(Search.ToUpper()) ||

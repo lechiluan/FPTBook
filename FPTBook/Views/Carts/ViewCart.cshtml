@@ -85,24 +85,25 @@
         </table>
     </div>
     <div class="form-group">
-        <div class="col-md-offset-5 col-md-7">
-            <a class="btn btn-primary" role="button" href="@Url.Action("OrderInformation", "Carts")">Order and Payment</a>
+        <div class="col-md-offset-4 col-md-8">
+            <a class="btn btn-primary" role="button" href="@Url.Action("Index", "Home")">Continue Shopping</a>
+            <a class="btn btn-primary" role="button" href="#Order">Order</a>
             <a class="btn btn-primary" role="button" href="@Url.Action("Index", "Home")">Cancel</a>
         </div>
     </div>
     <br />
     <br />
-    <div class="card-header py-3">
-        <h2 align="center"><b>Order Information</b></h2>
-        <hr />
-    </div>
-
-    <section>
+    <br />
+    <section id="Order">
         <div class="form-container">
             <div class="image-holder"></div>
             <div class="card-body">
                 @using (Html.BeginForm("OrderCart", "Carts", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
                 {
+                    <div class="card-header py-3">
+                        <h2 align="center"><b>Order Information</b></h2>
+                        <hr />
+                    </div>
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
@@ -114,13 +115,13 @@
                             <div class="form-group">
                                 <label class="col-md-5 control-label"><strong>Delivery Address</strong></label>
                                 <div class="col-md-7">
-                                    <input class="form-control" type="text" name="cAddress" placeholder="Enter Delivery Address" value="">
+                                    <input class="form-control" type="text" name="cAddress" placeholder="Enter Delivery Address" value="" autofocus="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-5 control-label"><strong>Total Price</strong></label>
                                 <div class="col-md-7">
-                                    <input class="form-control" type="text" name="cUsername" value="@Model.TotalPrice()" readonly>
+                                    <input class="form-control" type="text" name="cTotalPrice" value="@Model.TotalPrice()" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -132,7 +133,7 @@
                             <div class="form-group">
                                 <label class="col-md-5 control-label"><strong>FullName</strong></label>
                                 <div class="col-md-7">
-                                    <input class="form-control" type="text" name="cName" placeholder="Enter FullName" value="">
+                                    <input class="form-control" type="text" name="cFullName" placeholder="Enter FullName" value="">
                                 </div>
                             </div>
                             <div class="form-group">

@@ -167,6 +167,8 @@
     <Content Include="Image-Sildes\slide3.jpg" />
     <Content Include="Image-Sildes\slide2.jpg" />
     <Content Include="Image-Sildes\slide1.jpg" />
+    <Content Include="Image-Sildes\slide4.png" />
+    <Content Include="Image-Sildes\slide5.jpg" />
     <Content Include="Logo\arrow-up.png" />
     <Content Include="Logo\Book.gif" />
     <Content Include="Logo\BookAdmin.png" />
@@ -242,13 +244,15 @@
     <Content Include="Views\Feedbacks\Index.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Orders\Details.cshtml" />
-    <Content Include="Views\OrderDetails\Details.cshtml" />
     <Content Include="Views\OrderDetails\Index.cshtml" />
     <Content Include="Views\Carts\BagCart.cshtml" />
     <Content Include="Views\Carts\ViewCart.cshtml" />
     <Content Include="Views\Home\CategoryView.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\DetailBook.cshtml" />
+    <Content Include="Views\Carts\OrderSuccess.cshtml" />
+    <Content Include="Views\Carts\OrderHistory.cshtml" />
+    <Content Include="Views\Carts\OrderHistoryDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

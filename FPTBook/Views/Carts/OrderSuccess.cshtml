@@ -1,10 +1,23 @@
-﻿@model FPTBook.Models.Order
-
+﻿
+@model FPTBook.Models.Order
 @{
-    ViewBag.Title = "Order Details";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Order Success";
 }
 
+<h1 class="text-center" style="margin-top: 5%;text-align: center;font-size: 32px;">
+    Order successful <br />
+</h1>
+<h5 style="text-align: center;">
+    <b>
+        Thank you for trusting and choosing us.
+        Your order will be delivered as soon as possible.
+    </b>
+</h5>
+<br />
+<br />
+@Html.ActionLink("Home Page", "Index", "Home", null, new { @class = "btn btn-primary" })
+<br />
+<br />
 <h2 align="center"><b>Order Details</b></h2>
 <div class="container-fluid">
     <ul class="list-group" style="margin-left: 5%;margin-right: 5%;border-radius: 23px;">

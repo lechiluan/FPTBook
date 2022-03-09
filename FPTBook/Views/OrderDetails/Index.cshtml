@@ -21,23 +21,19 @@
                     <th style="text-align: center;">@Html.DisplayNameFor(model => model.Quantity)</th>
                     <th style="text-align: center;">@Html.DisplayNameFor(model => model.Price)</th>
                     <th style="text-align: center;">@Html.DisplayNameFor(model => model.Subtotal)</th>
-                    <th style="text-align: center;">Detail</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <td style="text-align: center;">@Html.DisplayFor(modelItem => item.OrderID)</td>
-                    <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Book.BookName)</td>
-                    <td style="text-align: center"><img src="~/Image/@item.Book.Image" style="width: 70px;height: 80px;"></td>
-                    <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Quantity)</td>
-                    <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Price)</td>
-                    <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Subtotal)</td>
-                    <td style="text-align: center;">
-                        <div>@Html.ActionLink(" ", "Details", new { id = item.OrderID }, new { @class = "glyphicon glyphicon-info-sign", @style = "font-size: 20px;color: rgb(1,1,1);" })</div>
-                    </td>
-                </tr>
+                    <tr>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => item.OrderID)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Book.BookName)</td>
+                        <td style="text-align: center"><img src="~/Image/@item.Book.Image" style="width: 70px;height: 80px;"></td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Quantity)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Price)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Subtotal)</td>
+                    </tr>
                 }
             </tbody>
         </table>
