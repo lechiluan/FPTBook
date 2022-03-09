@@ -1,0 +1,85 @@
+﻿@model FPTBook.Models.Book
+
+@{
+    ViewBag.Title = "Delete Book";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<head>
+    <style>
+        .img-delete {
+            height: 150px;
+            width: 100px;
+        }
+    </style>
+</head>
+<h2 align="center"><b>Delete Book</b></h2>
+<h3 align="center">Are you sure you want to delete this?</h3>
+<ul class="list-group" style="margin-left: 5%;margin-right: 5%;border-radius: 23px;">
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.BookID)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.BookID)</span>
+    </li>
+
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.BookName)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.BookName)</span>
+    </li>
+
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Category.CategoryName)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.Category.CategoryName)</span>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Author.AuthorName)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.Author.AuthorName)</span>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Publisher.PublisherName)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.Publisher.PublisherName)</span>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Quantity)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.Quantity)</span>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Price)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.Price)</span>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Description)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.Description)</span>
+    </li>
+
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Image)</label>
+        </div>
+        <img src="~/Image/@Model.Image" class="img-delete" style="margin-left: 5%" />
+    </li>
+    <li class="list-group-item">
+        <div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Delete" class="btn btn-primary style=" onclick="return confirm('Are you sure to delete?');" />
+                <a class="btn btn-primary" role="button" href="@Url.Action("Index", "Books")">Cancel</a>
+            }
+        </div>
+    </li>
+</ul>

@@ -1,0 +1,95 @@
+﻿@model IEnumerable<FPTBook.Models.Book>
+
+@{ 
+    ViewBag.Title = "Home Page";
+}
+
+@if (ViewBag.Success != null)
+{
+<script type="text/javascript">
+    window.onload = function () {
+        alert("@ViewBag.Success");
+    };
+</script>
+}
+
+@if (ViewBag.LoginCart != null)
+{
+<script type="text/javascript">
+    window.onload = function () {
+        alert("@ViewBag.LoginCart");
+        window.location = "/Account/SignIn";
+    };
+</script>
+}
+
+<div class="container">
+    <h2 align="center" class="welcome"><b>Welcome to FPT Book</b></h2>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img class="img-slide" src="~/Image-Sildes/slide1.jpg" alt="" style="width: 100%;height: 600px;">
+            </div>
+
+            <div class="item">
+                <img class="img-slide" src="~/Image-Sildes/slide2.jpg" alt="" style="width: 100%; height: 600px;">
+            </div>
+            <div class="item">
+                <img class="img-slide" src="~/Image-Sildes/slide3.jpg" alt="" style="width: 100%; height: 600px;">
+            </div>
+            <div class="item">
+                <img class="img-slide" src="~/Image-Sildes/slide4.png" alt="" style="width: 100%; height: 600px;">
+            </div>
+            <div class="item">
+                <img class="img-slide" src="~/Image-Sildes/slide5.jpg" alt="" style="width: 100%; height: 600px;">
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+<div class="container">
+    <br/>
+    <h2><u><b>All Book</b></u></h2>
+</div>
+
+<div class="container">
+    <!--Display Book-->
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-3">
+            <div class="card">
+                <a href="@Url.Action("DetailBook", "Home", new { id = item.BookID})"><img src="~/Image/@item.Image" class="imgcart"></a>
+                <br />
+                <h4 class="name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+                    <a href="@Url.Action("DetailBook", "Home", new { id = item.BookID})">@item.BookName</a>
+                </h4>
+                <div class="price">
+                    <ins>$@item.Price</ins>
+                </div>
+                <a href="@Url.Action("AddtoCart","Carts", new {id = item.BookID})" class="btn btn-primary addtocart">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart
+                </a>
+            </div>
+        </div>
+    }
+</div>

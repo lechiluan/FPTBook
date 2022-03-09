@@ -1,0 +1,51 @@
+﻿@model IEnumerable<FPTBook.Models.Author>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <h2 align="center"><b>Author Management</b></h2>
+            <br />
+            <div align="center">
+                @Html.ActionLink("Add New Author", "Add", null, new { @class = "btn btn-primary" })
+                <hr />
+            </div>
+        </div>
+        <table id="tablecategory" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th style="width: 241.4px;text-align: center;">@Html.DisplayNameFor(model => model.AuthorID)</th>
+                    <th style="text-align: center;">@Html.DisplayNameFor(model => model.AuthorName)</th>
+                    <th style="text-align: center;">@Html.DisplayNameFor(model => model.Description)</th>
+                    <th style="text-align: center;">Detail</th>
+                    <th style="text-align: center;">Update</th>
+                    <th style="text-align: center;">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => item.AuthorID)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => item.AuthorName)</td>
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Description)</td>
+
+                        <td style="text-align: center;">
+                            <div>@Html.ActionLink(" ", "Details", new { id = item.AuthorID }, new { @class = "glyphicon glyphicon-info-sign", @style = "font-size: 20px;color: rgb(1,1,1);" })</div>
+                        </td>
+                        <td style="text-align: center;">
+                            <div>@Html.ActionLink(" ", "Update", new { id = item.AuthorID }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px;color: rgb(1,1,1);" })</div>
+                        </td>
+                        <td style="text-align: center;">
+                            <div>@Html.ActionLink(" ", "Delete", new { id = item.AuthorID }, new { @class = "glyphicon glyphicon-remove", @style = "font-size: 20px;color: rgb(1,1,1);" })</div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

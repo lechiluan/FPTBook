@@ -1,0 +1,57 @@
+﻿@model FPTBook.Models.Feedback
+
+@{
+    ViewBag.Title = "Delete Feedback";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 align="center"><b>Feedback Detail</b></h2>
+<ul class="list-group" style="margin-left: 5%;margin-right: 5%;border-radius: 23px;">
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.FeedbackID)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.FeedbackID)</span>
+    </li>
+
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Username)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.Username)</span>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Email)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.Email)</span>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Telephone)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.Telephone)</span>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.Message)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.Message)</span>
+    </li>
+    <li class="list-group-item">
+        <div>
+            <label class="form-label" style="font-weight: bold;">@Html.DisplayNameFor(model => model.DateSend)</label>
+        </div>
+        <span style="font-size: 19px;">@Html.DisplayFor(model => model.DateSend)</span>
+    </li>
+    <li class="list-group-item">
+        <div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Delete" class="btn btn-primary style=" onclick="return confirm('Are you sure to delete?');" />
+                <a class="btn btn-primary" role="button" href="@Url.Action("Index", "Feedbacks")">Cancel</a>
+            }
+        </div>
+    </li>
+</ul>

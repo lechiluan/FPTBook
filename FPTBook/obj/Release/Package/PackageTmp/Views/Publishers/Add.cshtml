@@ -1,0 +1,63 @@
+﻿@model FPTBook.Models.Publisher
+
+@{
+    ViewBag.Title = "Add Publisher";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@if (ViewBag.Success != null)
+{
+    <script type="text/javascript">
+    window.onload = function () {
+        alert("@ViewBag.Success");
+    };
+    </script>
+}
+
+<body>
+    <section>
+        <div class="form-container">
+            <div class="image-holder"></div>
+            <div class="card-body">
+                @using (Html.BeginForm("Add", "Publishers", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <h2 align="center"><b>Add Publisher</b></h2>
+                    <hr />
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <strong>@Html.LabelFor(model => model.PublisherID, htmlAttributes: new { @class = "col-md-5 control-label" })</strong>
+                                <div class="col-md-7">
+                                    @Html.TextBoxFor(u => u.PublisherID, new { @class = "form-control", @required = "", @placeholder = "Enter Publisher ID" })
+                                    @Html.ValidationMessageFor(model => model.PublisherID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <strong>@Html.LabelFor(model => model.PublisherName, htmlAttributes: new { @class = "col-md-5 control-label" })</strong>
+                                <div class="col-md-7">
+                                    @Html.TextBoxFor(u => u.PublisherName, new { @class = "form-control", @required = "", @placeholder = "Enter Publisher Name" })
+                                    @Html.ValidationMessageFor(model => model.PublisherName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <strong>@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "col-md-5 control-label" })</strong>
+                                <div class="col-md-7">
+                                    @Html.TextBoxFor(u => u.Description, new { @class = "form-control", @required = "", @placeholder = "Enter Description" })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-5 col-md-7">
+                                    <input class="btn btn-primary" type="submit" value="Add new category" />
+                                    <a class="btn btn-primary" role="button" href="@Url.Action("Index", "Publishers")">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</body>

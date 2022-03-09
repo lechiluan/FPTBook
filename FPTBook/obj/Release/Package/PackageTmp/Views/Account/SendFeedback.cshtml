@@ -1,0 +1,69 @@
+﻿@model FPTBook.Models.Feedback
+@{
+    ViewBag.Title = "Send Feedback";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@if (ViewBag.Feedback != null)
+{
+    <script type="text/javascript">
+    window.onload = function () {
+        alert("@ViewBag.Feedback");
+        window.location = '/';
+    };
+    </script>
+}
+
+<section>
+    <div class="form-container">
+        <div class="image-holder"></div>
+        @using (Html.BeginForm("SendFeedback", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <h2 align="center"><b>Send us feedback. We will contact you as soon as possible.</b></h2>
+            <hr />
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <strong>@Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "col-md-5 control-label"})</strong>
+                <div class="col-md-7">
+                    @Html.TextBoxFor(u => u.Username, new { @class = "form-control", @Value = Session["Username"], @readonly = "", @style = "" })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "col-md-5 control-label" })
+                <div class="col-md-7">
+                    @Html.TextBoxFor(u => u.Email, new { @class = "form-control", @placeholder = "Email", @autofocus = "", @required = "" })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Telephone, new { @class = "col-md-5 control-label" })
+                <div class="col-md-7">
+                    @Html.TextBoxFor(u => u.Telephone, new { @class = "form-control", @placeholder = "Telephone", @autofocus = "", @required = "" })
+                    @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.HiddenFor(u => u.DateSend, new { @class = "form-control form-control-lg", @Value = DateTime.Now, @readonly = "" })
+                @Html.ValidationMessageFor(model => model.DateSend, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <strong>@Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "col-md-5 control-label" })</strong>
+                <div class="col-md-7">
+                    @Html.TextAreaFor(u => u.Message, new { @class = "form-control form-control-lg", @placeholder = "Your feedback", @required = "", @style = "height:150px;" })
+                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                </div>  
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-5 col-md-7">
+                    <input class="btn btn-primary" type="submit" value="Send" style="" />
+                    <a class="btn btn-primary" role="button" style="" href="@Url.Action("Index", "Home")">Cancel</a>
+                </div>
+            </div>
+         }
+    </div> 
+</section>
+
