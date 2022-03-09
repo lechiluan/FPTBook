@@ -49,6 +49,7 @@ namespace FPTBook.Controllers
         {
             if (ModelState.IsValid)
             {
+                // IsModifile is can edit
                 db.Accounts.Attach(account);
                 db.Entry(account).Property(a => a.Fullname).IsModified = true;
                 db.Entry(account).Property(a => a.Email).IsModified = true;
@@ -62,6 +63,7 @@ namespace FPTBook.Controllers
 
             return View(account);
         }
+
         public ActionResult ChangePassword()
         {
             var user = Session["Admin"];
@@ -76,6 +78,7 @@ namespace FPTBook.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ChangePassword(Account account)
         {
+            // Get seesion admin
             var user = Session["Admin"];
 
             Account objAccount = db.Accounts.ToList().Find(p => p.Username.Equals(user) && p.Password.Equals(PasswordMD5(account.CurrentPassword)));
@@ -88,7 +91,6 @@ namespace FPTBook.Controllers
             {
                 ViewBag.aConfirm = "The new password and confirmation new password do not match.";
             }
-
             else
             {
                 objAccount.Password = PasswordMD5(account.NewPassword);

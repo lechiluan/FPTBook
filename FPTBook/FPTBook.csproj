@@ -255,6 +255,7 @@
     <Content Include="Views\Carts\ViewCart.cshtml" />
     <Content Include="Views\Home\CategoryView.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\DetailBook.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

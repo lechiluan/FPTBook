@@ -4,7 +4,6 @@
     ViewBag.Title = "Home Page";
 }
 
-
 @if (ViewBag.Success != null)
 {
 <script type="text/javascript">
@@ -62,7 +61,7 @@
 
 <div class="container">
     <br/>
-    <h3><u><b>All Book</b></u></h3>
+    <h2><u><b>All Book</b></u></h2>
 </div>
 
 <div class="container">
@@ -71,10 +70,10 @@
     {
         <div class="col-sm-3">
             <div class="card">
-                <a href="@Url.Action("BookDetail", "Home", new { id = item.BookID})"><img src="~/Image/@item.Image" class="imgcart"></a>
+                <a href="@Url.Action("DetailBook", "Home", new { id = item.BookID})"><img src="~/Image/@item.Image" class="imgcart"></a>
                 <br />
                 <h4 class="name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-                    <a href="@Url.Action("BookDetail", "Home", new { id = item.BookID})">@item.BookName</a>
+                    <a href="@Url.Action("DetailBook", "Home", new { id = item.BookID})">@item.BookName</a>
                 </h4>
                 <div class="price">
                     <ins>$@item.Price</ins>

@@ -126,6 +126,11 @@
             font-size:large;
             height:22px;
         }
+        .nav > li > a {
+            position: relative;
+            display: block;
+            padding: 15px 10px;
+        }
     </style>
 
 </head>
@@ -152,11 +157,11 @@
                             Book Category<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="?page=science">Science</a></li>
-                            <li><a href="?page=lego">Lego</a></li>
-                            <li><a href="?page=vehicles">Vehicles</a></li>
-                            <li><a href="?page=ae">Architects & Engineers</a></li>
-                            <li><a href="?page=allproduct">All Product</a></li>
+                            <li><a href="@Url.Action("CategoryView","Home", new {id = "C01"})">Science</a></li>
+                            <li><a href="@Url.Action("CategoryView","Home", new {id = "C02"})">Lego</a></li>
+                            <li><a href="@Url.Action("CategoryView","Home", new {id = "C03"})">Vehicles</a></li>
+                            <li><a href="@Url.Action("CategoryView","Home", new {id = "C04"})">Architects & Engineers</a></li>
+                            <li><a href="@Url.Action("CategoryView","Home", new {})">All Books</a></li>
                         </ul>
                     </li>
 
@@ -177,13 +182,13 @@
                     @if(Session["Username"] != null)
                     {
                     <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="@Url.Action("OrderHistory", "Carts" , new { id=Session["Username"] })"><span class="	glyphicon glyphicon-list-alt"></span> Order history</a></li>
-                    <li><a href="@Url.Action("ShowToCart", "Carts" )"><span class="glyphicon glyphicon-shopping-cart"></span> Cart (@Html.Action("BagCart","Carts")) </a></li>
+                    <li><a href="@Url.Action("ViewCart", "Carts" )"><span class="glyphicon glyphicon-shopping-cart"></span> Cart (@Html.Action("BagCart","Carts")) </a></li>
                     <li><a href="@Url.Action("UpdateAccount", "Account" )"><span class="glyphicon glyphicon-user"></span> Hi, @Session["Username"]</a></li>
                     <li><a href="@Url.Action("SignOut","Account")"><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
                     }
                     else
                     {
-                    <li><a href="@Url.Action("ShowToCart", "Cart" )"><span class="glyphicon glyphicon-shopping-cart"></span> Cart (@Html.Action("BagCart","Carts")) </a></li>
+                    <li><a href="@Url.Action("ViewCart", "Carts" )"><span class="glyphicon glyphicon-shopping-cart"></span> Cart (@Html.Action("BagCart","Carts")) </a></li>
                     <li><a href="@Url.Action("SignUp","Account")"><span class="glyphicon glyphicon-edit"></span> Sign Up </a></li>
                     <li><a href="@Url.Action("SignIn","Account")"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
                     }

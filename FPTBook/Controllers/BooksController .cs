@@ -66,31 +66,6 @@ namespace FPTBook.Controllers
         {
             if (ModelState.IsValid)
             {
-                /*try
-                {
-                    //Method 3. Save image to Avatars folder and save the name to DB 
-                    //name of upload file control in the view file have to be the same with attribute of member
-                    if (book.myfile != null)
-                    {
-                        string path = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(book.myfile.FileName));
-                        book.myfile.SaveAs(path);
-                    }
-                    book.Image = book.myfile.FileName;
-
-                    ViewBag.FileStatus = "File uploaded successfully.";
-                }
-                catch (Exception e)
-                {
-                    ViewBag.FileStatus = "Error while file uploading."; ;
-                }
-                ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", book.CategoryID);
-                ViewBag.AuthorID = new SelectList(db.Authors, "AuthorID", "AuthorName", book.AuthorID);
-                ViewBag.PublisherID = new SelectList(db.Publishers, "PublisherID", "PublisherName", book.PublisherID);
-                db.Books.Add(book);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(book);*/
                 if (image != null && image.ContentLength > 0)
                 {
                     string pic = Path.GetFileName(image.FileName);

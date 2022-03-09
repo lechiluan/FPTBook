@@ -1,7 +1,150 @@
-﻿
+﻿@model FPTBook.Models.Cart
+
 @{
-    ViewBag.Title = "ViewCart";
+    ViewBag.Title = "Shopping Cart";
 }
 
-<h2>ViewCart</h2>
 
+<head>
+    <style>
+        .img-index {
+            width: 80px;
+            height: 100px;
+        }
+
+        #table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+
+@if (Model != null)
+{
+    <div class="container-fluid">
+        <div class="card-header py-3">
+            <h2 align="center"><b>My Cart</b></h2>
+            <hr />
+        </div>
+        <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th style="width: 250px;text-align: center;">Delete</th>
+                    <th style="width: 250px;text-align: center;">Image</th>
+                    <th style="width: 250px;text-align: center;">Book Name</th>
+                    <th style="width: 250px;text-align: center;">Price</th>
+                    <th style="width: 250px;text-align: center;">Quantity</th>
+                    <th style="width: 250px;text-align: center;">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    double subtotal = item._shopping_product.Price * item._shopping_quantity;
+
+                    <tr>
+                        <td style="text-align: center;">
+                            <div>@Html.ActionLink(" ", "Delete", "Carts", new { id = item._shopping_product.BookID }, new { @class = "glyphicon glyphicon-remove", @style = "font-size: 20px;color: rgb(1,1,1);" })</div>
+                        </td>
+                        <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">
+                            <div>
+                                <img src="~/Image/@Url.Content(item._shopping_product.Image)" loading="eager" class="img-index" />
+                            </div>
+                        </td>
+
+                        <td style="text-align: center;">@Html.DisplayFor(modelItem => item._shopping_product.BookName)</td>
+                        <td style="text-align: center;">$@Html.DisplayFor(modelItem => item._shopping_product.Price)</td>
+                        <td>
+                            @using (Html.BeginForm("UpdateQuantity", "Carts"))
+                            {
+                                <div style="text-align: center; width: 100%">
+                                    <input type="hidden" value="@item._shopping_product.BookID" name="Book_ID" />
+                                    <input type="number" style="width: 100%;" value="@item._shopping_quantity" name="Quantity" min="1" />
+                                </div>
+                                <div style="text-align: center; width: 100%; ">
+                                    <input type="submit" style="width: 50%" class="btn btn-primary" value="Update" />
+                                </div>
+                            }
+                        </td>
+                        <td style="text-align: center;">$@subtotal </td>
+                    </tr>
+                }
+                <tr>
+                    <td colspan="4" align="right">
+                        <h3><b>TOTAL:</b></h3>
+                    </td>
+                    <td>
+                        <h3><b>@Model.TotalQuantity()</b></h3>
+                    </td>
+                    <td>
+                        <h3 style="color:red"><b>$@Model.TotalPrice()</b></h3>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-5 col-md-7">
+            <a class="btn btn-primary" role="button" href="@Url.Action("OrderInformation", "Carts")">Order and Payment</a>
+            <a class="btn btn-primary" role="button" href="@Url.Action("Index", "Home")">Cancel</a>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="card-header py-3">
+        <h2 align="center"><b>Order Information</b></h2>
+        <hr />
+    </div>
+
+    <section>
+        <div class="form-container">
+            <div class="image-holder"></div>
+            <div class="card-body">
+                @using (Html.BeginForm("OrderCart", "Carts", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label"><strong>Username</strong></label>
+                                <div class="col-md-7">
+                                    <input class="form-control" type="text" name="cUsername" value="@Session["Username"]" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-5 control-label"><strong>Delivery Address</strong></label>
+                                <div class="col-md-7">
+                                    <input class="form-control" type="text" name="cAddress" placeholder="Enter Delivery Address" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-5 control-label"><strong>Total Price</strong></label>
+                                <div class="col-md-7">
+                                    <input class="form-control" type="text" name="cUsername" value="@Model.TotalPrice()" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-5 control-label"><strong>Telephone</strong></label>
+                                <div class="col-md-7">
+                                    <input class="form-control" type="text" name="cPhone" placeholder="Enter Telephone" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-5 control-label"><strong>Telephone</strong></label>
+                                <div class="col-md-7">
+                                    <input class="form-control" type="text" name="cName" placeholder="Enter FullName" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-5 col-md-7">
+                                    <input class="btn btn-primary" type="submit" value="Order Book" />
+                                    <a class="btn btn-primary" role="button" href="@Url.Action("Index", "Home")">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

@@ -12,7 +12,7 @@ namespace FPTBook.Controllers
 {
     public class CartsController : Controller
     {
-        public FPTBookDBContext _db = new FPTBookDBContext();
+        public FPTBookDBContext db = new FPTBookDBContext();
 
         // GET: Carts
         public ActionResult Index()
@@ -28,19 +28,18 @@ namespace FPTBook.Controllers
                 Session["Cart"] = cart;
             }
             return cart;
-
         }
 
         public ActionResult AddtoCart(string id)
         {
             if (Session["Username"] != null)
             {
-                var pro = _db.Books.SingleOrDefault(s => s.BookID == id);
+                var pro = db.Books.SingleOrDefault(s => s.BookID == id);
                 if (pro != null)
                 {
                     GetCart().Add(pro);
                 }
-                return RedirectToAction("ShowToCart", "ShoppingCart");
+                return RedirectToAction("ViewCart", "Carts");
             }
 
             return View("ErrorCart");
@@ -49,20 +48,20 @@ namespace FPTBook.Controllers
         public ActionResult UpdateQuantity(FormCollection form)
         {
             Cart cart = Session["Cart"] as Cart;
-            string id_pro = form["ID_Product"];
+            string id_pro = form["Book_ID"];
             int quantity = int.Parse(form["Quantity"]);
             cart.Update_Quantity_Shopping(id_pro, quantity);
-            return RedirectToAction("ShowToCart", "ShoppingCart");
+            return RedirectToAction("ViewCart", "Carts");
         }
 
         public ActionResult Delete(string id)
         {
             Cart cart = Session["Cart"] as Cart;
             cart.DeleteCart(id);
-            return RedirectToAction("ShowToCart", "ShoppingCart");
+            return RedirectToAction("ViewCart", "Carts");
         }
 
-        public ActionResult ShowToCart()
+        public ActionResult ViewCart()
         {
             if (Session["Username"] != null)
             {
@@ -89,7 +88,7 @@ namespace FPTBook.Controllers
             return PartialView("BagCart");
         }
 
-        public ActionResult Checkout(FormCollection form)
+        public ActionResult OrderCart(FormCollection form)
         {
             try
             {
@@ -99,31 +98,30 @@ namespace FPTBook.Controllers
                 _order.Username = form["cUsername"];
                 _order.DeliveyAddress = form["cAddress"];
                 _order.Telephone = form["cPhone"];
+                _order.Fullname = form["cName"];
                 _order.TotalPrice = Convert.ToInt32(form["cTotalPrice"]);
-                _db.Orders.Add(_order);
+                db.Orders.Add(_order);
 
                 foreach (var item in cart.Items)
                 {
                     OrderDetail orderDetail = new OrderDetail();
                     orderDetail.OrderID = _order.OrderID;
                     orderDetail.BookID = item._shopping_product.BookID;
+                    orderDetail.Price = item._shopping_product.Price;
                     orderDetail.Quantity = item._shopping_quantity;
                     orderDetail.Subtotal = item._shopping_product.Price * item._shopping_quantity;
 
-                    var pro = _db.Books.SingleOrDefault(s => s.BookID == orderDetail.BookID);
+                    var pro = db.Books.SingleOrDefault(s => s.BookID == orderDetail.BookID);
 
                     pro.Quantity -= orderDetail.Quantity;
-                    _db.Books.Attach(pro);
-                    _db.Entry(pro).Property(a => a.Quantity).IsModified = true;
+                    db.Books.Attach(pro);
+                    db.Entry(pro).Property(a => a.Quantity).IsModified = true;
 
-                    _db.OrderDetails.Add(orderDetail);
-
-
+                    db.OrderDetails.Add(orderDetail);
                 }
-
-                _db.SaveChanges();
+                db.SaveChanges();
                 cart.ClearCart();
-                return RedirectToAction("CheckoutSuccess", "ShoppingCart", new { id = _order.OrderID });
+                return RedirectToAction("CheckoutSuccess", "Carts", new { id = _order.OrderID });
             }
             catch
             {
@@ -131,12 +129,11 @@ namespace FPTBook.Controllers
             }
         }
 
-
-        public ActionResult CheckoutSuccess(int? id)
+        public ActionResult OrderSuccess(int? id)
         {
             if (Session["Username"] != null)
             {
-                var order = _db.Orders.Find(id);
+                var order = db.Orders.Find(id);
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -150,12 +147,11 @@ namespace FPTBook.Controllers
             return View("ErrorCart");
         }
 
-
         public ActionResult OrderHistory(string id)
         {
             if (Session["Username"] != null)
             {
-                var orderHis = _db.Orders.ToList().Where(s => s.Username == id);
+                var orderHis = db.Orders.ToList().Where(s => s.Username == id);
 
                 if (id == null)
                 {
@@ -174,7 +170,7 @@ namespace FPTBook.Controllers
         {
             if (Session["Username"] != null)
             {
-                var order = _db.Orders.Find(id);
+                var order = db.Orders.Find(id);
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
