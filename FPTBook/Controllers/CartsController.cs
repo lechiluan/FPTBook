@@ -49,7 +49,17 @@ namespace FPTBook.Controllers
             Cart cart = Session["Cart"] as Cart;
             string id_pro = form["Book_ID"];
             int quantity = int.Parse(form["Quantity"]);
-            cart.Update_Quantity_Shopping(id_pro, quantity);
+            Book qStock = db.Books.FirstOrDefault(a => a.BookID == id_pro);
+
+            if (quantity > qStock.Quantity)
+            {
+                return Content("<script>alert('Quantity is larger than our stock');window.location.replace('/');</script>");
+            }
+            else
+            {
+                cart.Update_Quantity_Shopping(id_pro, quantity);
+
+            }
             return RedirectToAction("ViewCart", "Carts");
         }
 

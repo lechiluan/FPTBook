@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>E:\FPTBook</_PublishTargetUrl>
-    <History>True|2022-03-10T01:38:26.6232111Z;True|2022-03-10T01:04:27.0674392+07:00;True|2022-03-09T21:45:24.3270669+07:00;</History>
+    <History>True|2022-03-10T02:16:19.9272196Z;True|2022-03-10T09:13:14.3354302+07:00;True|2022-03-10T09:12:43.6522315+07:00;True|2022-03-10T09:08:59.9531631+07:00;True|2022-03-10T09:05:16.5865198+07:00;True|2022-03-10T09:00:28.5542630+07:00;True|2022-03-10T08:59:02.4740434+07:00;True|2022-03-10T08:38:26.6232111+07:00;True|2022-03-10T01:04:27.0674392+07:00;True|2022-03-09T21:45:24.3270669+07:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
@@ -21,10 +21,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/05/2022 22:54:44</publishTime>
     </File>
     <File Include="bin/FPTBook.dll">
-      <publishTime>03/10/2022 08:38:25</publishTime>
+      <publishTime>03/10/2022 09:16:19</publishTime>
     </File>
     <File Include="bin/FPTBook.pdb">
-      <publishTime>03/10/2022 08:38:25</publishTime>
+      <publishTime>03/10/2022 09:16:19</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>03/05/2022 22:54:44</publishTime>
@@ -411,10 +411,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/09/2022 16:58:05</publishTime>
     </File>
     <File Include="Views/Carts/OrderHistoryDetails.cshtml">
-      <publishTime>03/09/2022 16:53:09</publishTime>
+      <publishTime>03/10/2022 09:13:08</publishTime>
     </File>
     <File Include="Views/Carts/OrderSuccess.cshtml">
-      <publishTime>03/09/2022 16:45:30</publishTime>
+      <publishTime>03/10/2022 09:08:55</publishTime>
     </File>
     <File Include="Views/Carts/ViewCart.cshtml">
       <publishTime>03/09/2022 16:03:18</publishTime>
@@ -453,7 +453,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/09/2022 14:53:30</publishTime>
     </File>
     <File Include="Views/Home/DetailBook.cshtml">
-      <publishTime>03/08/2022 23:41:05</publishTime>
+      <publishTime>03/10/2022 09:16:14</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>03/09/2022 23:28:17</publishTime>
