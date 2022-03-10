@@ -55,7 +55,6 @@ namespace FPTBook.Models
         public string Image { get; set; }
 
         [Required]
-        [StringLength(1000)]
         [Display(Name = "Description")]
         public string Description { get; set; }
 

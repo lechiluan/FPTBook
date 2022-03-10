@@ -253,6 +253,7 @@
     <Content Include="Views\Carts\OrderSuccess.cshtml" />
     <Content Include="Views\Carts\OrderHistory.cshtml" />
     <Content Include="Views\Carts\OrderHistoryDetails.cshtml" />
+    <Content Include="Views\AdminAccount\SearchUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

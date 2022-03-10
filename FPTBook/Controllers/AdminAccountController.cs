@@ -169,5 +169,15 @@ namespace FPTBook.Controllers
             }
             return byte2String;
         }
+
+        public ActionResult SearchUser(string Search)
+        {
+            ViewBag.Search = Search;
+            var account = db.Accounts.ToList().Where(s =>
+            s.Username.ToUpper().Contains(Search.ToUpper()) ||
+                 s.Email.ToUpper().Contains(Search.ToUpper()) ||
+                 s.Fullname.ToUpper().Contains(Search.ToUpper()));
+            return View(account);
+        }
     }
 }

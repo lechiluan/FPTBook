@@ -157,11 +157,11 @@
                             Book Category<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("CategoryView","Home", new {id = "C01"})">Science</a></li>
-                            <li><a href="@Url.Action("CategoryView","Home", new {id = "C02"})">Lego</a></li>
-                            <li><a href="@Url.Action("CategoryView","Home", new {id = "C03"})">Vehicles</a></li>
-                            <li><a href="@Url.Action("CategoryView","Home", new {id = "C04"})">Architects & Engineers</a></li>
-                            <li><a href="@Url.Action("CategoryView","Home", new {})">All Books</a></li>
+                            <li><a href="@Url.Action("CategoryView","Home", new {id = "C01"})">Computers</a></li>
+                            <li><a href="@Url.Action("CategoryView","Home", new {id = "C02"})">Business</a></li>
+                            <li><a href="@Url.Action("CategoryView","Home", new {id = "C03"})">Education</a></li>
+                            <li><a href="@Url.Action("CategoryView","Home", new {id = "C04"})">Self-help</a></li>
+                            <li><a href="@Url.Action("CategoryView","Home", new {id = "All"})">All Books</a></li>
                         </ul>
                     </li>
 
@@ -172,7 +172,7 @@
                     @using (Html.BeginForm("Search", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "navbar-form navbar-left" }))
                     {
                         <div class="form-group">
-                             @Html.TextBox("Search", "", new { placeholder = "  Search...", @class="form-control" });
+                             @Html.TextBox("Search", "", new { placeholder = "  Search...", @class="form-control" })
                         </div>   
                         <button type="submit" class="btn btn-default">Search</button>
                     }
@@ -245,14 +245,15 @@
                 <h4 class="footer-h4">@Html.ActionLink("Home", "Index", "Home")</h4>
                 <h4 class="footer-h4">@Html.ActionLink("About us", "About", "Home")</h4>
                 <h4 class="footer-h4">@Html.ActionLink("Contact us", "Contact", "Home")</h4>
+                <h4 class="footer-h4">@Html.ActionLink("Feedback", "SendFeedback", "Account")</h4>
             </div>
             <div class="col-sm-3">
                 <h3 class="footer-h3">CATEGORIES</h3>
-                <h4 class="footer-h4"><a href="#">Category 1</a></h4>
-                <h4 class="footer-h4"><a href="#">Category 2</a></h4>
-                <h4 class="footer-h4"><a href="#">Category 3</a></h4>
-                <h4 class="footer-h4"><a href="#">Category 4</a></h4>
-                <h4 class="footer-h4"><a href="#">All Books</a></h4>
+                <h4 class="footer-h4"><a href="@Url.Action("CategoryView","Home", new {id = "C01"})">Computers</a></h4>
+                <h4 class="footer-h4"><a href="@Url.Action("CategoryView","Home", new {id = "C02"})">Business</a></h4>
+                <h4 class="footer-h4"><a href="@Url.Action("CategoryView","Home", new {id = "C03"})">Education</a></h4>
+                <h4 class="footer-h4"><a href="@Url.Action("CategoryView","Home", new {id = "C04"})">Self-help</a></h4>
+                <h4 class="footer-h4"><a href="@Url.Action("CategoryView","Home", new {id = "All"})">All Books</a></h4>
             </div>
         </div>
     </div>

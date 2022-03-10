@@ -41,14 +41,21 @@ namespace FPTBook.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var books = db.Books.ToList().Where(a => a.CategoryID == id);
-
-            //Book book = db.Books.ToList().Find(a => a.CategoryID == id);
-            if (books == null)
+            var book = db.Books.ToList();
+            if (id == "All")
             {
-                return HttpNotFound();
+                return View(book);
             }
-            return View(books);
+            else
+            {
+                var books = db.Books.ToList().Where(a => a.CategoryID == id);
+
+                if (books == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(books);
+            }
         }
 
         public ActionResult Search(string Search)

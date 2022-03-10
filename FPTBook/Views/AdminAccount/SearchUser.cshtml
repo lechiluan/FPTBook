@@ -11,9 +11,9 @@
             width: 80px;
             height: 100px;
         }
-        #search{
+
+        #search {
             text-align: center;
-            
         }
     </style>
 </head>
@@ -22,15 +22,15 @@
         <div class="card-header py-3">
             <h2 align="center"><b>User Account Management</b></h2>
             <div align="center">
-                @using (Html.BeginForm("SearchUser", "AdminAccount", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @id = "search"  }))
+                @using (Html.BeginForm("SearchUser", "AdminAccount", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @id = "search" }))
                 {
-                <div class="form-group"  id="search">
-                    @Html.TextBox("Search", "", new { placeholder = " Search...", @class = "form-control", @id="search", @style="max-width: 100%;width: 100%"})
-                </div>
-                <button type="submit" class="btn btn-primary">Search</button>
-            }
+                    <div class="form-group" id="search">
+                        @Html.TextBox("Search", "", new { placeholder = " Search...", @class = "form-control", @id = "search", @style = "max-width: 100%;width: 100%" })
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                }
             </div>
-            
+
             <br />
             <hr />
         </div>
@@ -55,17 +55,21 @@
                         <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Email)</td>
                         <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Telephone)</td>
                         <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Address)</td>
-                        @if (item.Role == 1){
+                        @if (item.Role == 1)
+                        {
                             <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">Admin</td>
                         }
-                        else { 
+                        else
+                        {
                             <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">User</td>
                         }
                         @*Don't can change role of admin*@
-                        @if (item.Username.Equals("admin")){
+                        @if (item.Username.Equals("admin"))
+                        {
                             <td style="text-align: center;color: rgb(0,0,0);font-weight: bold;">Administrator</td>
                         }
-                        else{
+                        else
+                        {
                             <td style="text-align: center;">
                                 <div>@Html.ActionLink(" ", "UpdateUser", new { id = item.Username }, new { @class = "glyphicon glyphicon-edit", @style = "font-size: 20px;color: rgb(1,1,1);" })</div>
                             </td>

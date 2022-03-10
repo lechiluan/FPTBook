@@ -11,12 +11,26 @@
             width: 80px;
             height: 100px;
         }
+        #search{
+            text-align: center;
+            
+        }
     </style>
 </head>
 <div class="container-fluid">
     <div class="card shadow">
         <div class="card-header py-3">
             <h2 align="center"><b>User Account Management</b></h2>
+            <div align="center">
+                @using (Html.BeginForm("SearchUser", "AdminAccount", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @id = "search"  }))
+                {
+                <div class="form-group"  id="search">
+                    @Html.TextBox("Search", "", new { placeholder = " Search...", @class = "form-control", @id="search", @style="max-width: 100%;width: 100%"})
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            }
+            </div>
+            
             <br />
             <hr />
         </div>
