@@ -93,8 +93,6 @@ namespace FPTBook.Controllers
         {
             try
             {
-                
-
                 if(Session["Username"] == null)
                 {
                     return Content("<script>alert('Please Sign In to Order');window.location.replace('/Account/SignIn');</script>");
