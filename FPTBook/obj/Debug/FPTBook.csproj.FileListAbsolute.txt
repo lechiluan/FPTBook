@@ -163,3 +163,4 @@ E:\GitHub\FPTBook\FPTBook\obj\Debug\FPTBook.csproj.CoreCompileInputs.cache
 E:\GitHub\FPTBook\FPTBook\obj\Debug\FPTBook.csproj.CopyComplete
 E:\GitHub\FPTBook\FPTBook\obj\Debug\FPTBook.dll
 E:\GitHub\FPTBook\FPTBook\obj\Debug\FPTBook.pdb
+E:\GitHub\FPTBook\FPTBook\obj\Debug\FPTBook.csproj.AssemblyReference.cache

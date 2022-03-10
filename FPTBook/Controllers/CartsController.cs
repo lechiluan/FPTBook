@@ -14,11 +14,6 @@ namespace FPTBook.Controllers
     {
         public FPTBookDBContext db = new FPTBookDBContext();
 
-        // GET: Carts
-        public ActionResult Index()
-        {
-            return View();
-        }
         public Cart GetCart()
         {
             Cart cart = Session["Cart"] as Cart;
@@ -32,60 +27,74 @@ namespace FPTBook.Controllers
 
         public ActionResult AddtoCart(string id)
         {
-            var pro = db.Books.SingleOrDefault(s => s.BookID == id);
-            if (pro != null)
+            if (Session["Username"] != null)
             {
-                GetCart().Add(pro);
+                var pro = db.Books.SingleOrDefault(s => s.BookID == id);
+                if (pro != null)
+                {
+                    GetCart().Add(pro);
+                }
+                return RedirectToAction("ViewCart", "Carts");
             }
-            return RedirectToAction("ViewCart", "Carts");
+            return View("ErrorCart");
+            
         }
 
         public ActionResult UpdateQuantity(FormCollection form)
         {
-            Cart cart = Session["Cart"] as Cart;
-            string id_pro = form["Book_ID"];
-            int quantity = int.Parse(form["Quantity"]);
-            Book qStock = db.Books.FirstOrDefault(a => a.BookID == id_pro);
-
-            if (quantity > qStock.Quantity)
+            if (Session["Username"] != null)
             {
-                return Content("<script>alert('Quantity is larger than our stock');window.location.replace('/Carts/ViewCart');</script>");
-            }
-            else
-            {
-                cart.Update_Quantity_Shopping(id_pro, quantity);
+                Cart cart = Session["Cart"] as Cart;
+                string id_pro = form["Book_ID"];
+                int quantity = int.Parse(form["Quantity"]);
+                Book qStock = db.Books.FirstOrDefault(a => a.BookID == id_pro);
 
+                if (quantity > qStock.Quantity)
+                {
+                    return Content("<script>alert('Quantity is larger than our stock');window.location.replace('/Carts/ViewCart');</script>");
+                }
+                else
+                {
+                    cart.Update_Quantity_Shopping(id_pro, quantity);
+
+                }
+                return RedirectToAction("ViewCart", "Carts");
             }
-            return RedirectToAction("ViewCart", "Carts");
+            return View("ErrorCart");
         }
 
         public ActionResult Delete(string id)
         {
-            Cart cart = Session["Cart"] as Cart;
-            cart.DeleteCart(id);
-            return RedirectToAction("ViewCart", "Carts");
+            if (Session["Username"] != null)
+            {
+                Cart cart = Session["Cart"] as Cart;
+                cart.DeleteCart(id);
+                return RedirectToAction("ViewCart", "Carts");
+            }
+            return View("ErrorCart");
         }
 
         public ActionResult ViewCart()
         {
-            if (Session["Cart"] == null)
+            if (Session["Username"] != null)
             {
-                Response.Write("<script>alert('Cart is empty');window.location='/'</script>");
+                if (Session["Cart"] == null)
+                {
+                    Response.Write("<script>alert('Cart is empty');window.location='/'</script>");
+                }
+                Cart cart = Session["Cart"] as Cart;
+                return View(cart);
             }
-            Cart cart = Session["Cart"] as Cart;
-            return View(cart);
+            return View("ErrorCart");   
         }
 
         public PartialViewResult BagCart()
         {
             int total_item = 0;
-
             Cart cart = Session["Cart"] as Cart;
-
             if (cart != null)
                 total_item = cart.TotalQuantity();
             ViewBag.TotalItem = total_item;
-
             return PartialView("BagCart");
         }
 
@@ -191,6 +200,14 @@ namespace FPTBook.Controllers
                 return View(order);
             }
             return View("ErrorCart");
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

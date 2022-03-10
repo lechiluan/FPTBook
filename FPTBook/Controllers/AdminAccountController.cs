@@ -179,5 +179,13 @@ namespace FPTBook.Controllers
                  s.Fullname.ToUpper().Contains(Search.ToUpper()));
             return View(account);
         }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }
