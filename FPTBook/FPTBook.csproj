@@ -169,6 +169,22 @@
     <Content Include="Image-Sildes\slide1.jpg" />
     <Content Include="Image-Sildes\slide4.png" />
     <Content Include="Image-Sildes\slide5.jpg" />
+    <Content Include="Image\BlockchainBasics.jpg" />
+    <Content Include="Image\Clean-Code.jpg" />
+    <Content Include="Image\Daily Wisdom for Why Does He Do That.jpg" />
+    <Content Include="Image\Dangerous Personalities An FBI Profiler Shows You How to Identify and Protect Yourself from Harmful People.jpg" />
+    <Content Include="Image\Feeling Great The Revolutionary New Treatment for Depression and Anxiety.jpg" />
+    <Content Include="Image\How to Survive University An Essential Pocket Guide.jpg" />
+    <Content Include="Image\How Tutoring Works Six Steps to Grow Motivation and Accelerate Student Learning.jpg" />
+    <Content Include="Image\Making Differentiation a Habit How to Ensure Success in Academically Diverse Classrooms.jpg" />
+    <Content Include="Image\Professional-ASP-NET-MVC-5-Galloway-Jon.jpg" />
+    <Content Include="Image\RichDadPoorDad.jpg" />
+    <Content Include="Image\Self-Paced-Training-Kit-Exam.jpg" />
+    <Content Include="Image\The Story of Success.jpg" />
+    <Content Include="Image\The-Magic-of-Thinking-Big-9780671646783.jpg" />
+    <Content Include="Image\Think Again.jpg" />
+    <Content Include="Image\Unwinding Anxiety New Science Shows How to Break the Cycles of Worry and Fear to Heal Your Mind.jpg" />
+    <Content Include="Image\Wisdom of Insecurity  A Message for an Age of Anxiety.jpg" />
     <Content Include="Logo\arrow-up.png" />
     <Content Include="Logo\Book.gif" />
     <Content Include="Logo\BookAdmin.png" />
@@ -257,7 +273,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Image\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>

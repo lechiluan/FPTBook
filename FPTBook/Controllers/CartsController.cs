@@ -49,7 +49,7 @@ namespace FPTBook.Controllers
 
             if (quantity > qStock.Quantity)
             {
-                return Content("<script>alert('Quantity is larger than our stock');window.location.replace('/');</script>");
+                return Content("<script>alert('Quantity is larger than our stock');window.location.replace('/Carts/ViewCart');</script>");
             }
             else
             {
