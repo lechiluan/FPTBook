@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Order History Details";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2 align="center"><b>Order Details</b></h2>
@@ -62,43 +61,41 @@
 </div>
 
 <div class="container-fluid" id="detail">
-    <div class="card shadow">
-        <div class="card-header py-3">
-            <h2 align="center"><b>Book details of the order</b></h2>
-            <hr />
-        </div>
-        <table id="tablecategory" class="table table-striped table-bordered" cellspacing="0" width="100%">
-            <thead>
-                <tr>
-                    <th style="text-align: center;">OrderID</th>
-                    <th style="text-align: center;">Book Name</th>
-                    <th style="text-align: center;">Image</th>
-                    <th style="text-align: center;">Quantity</th>
-                    <th style="text-align: center;">Price</th>
-                    <th style="text-align: center;">Subtotal</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.OrderDetails)
-                {
-                    <tr>
-                        <td style="text-align: center;">@item.OrderID</td>
-                        <td style="text-align: center;">@item.Book.BookName</td>
-                        <td style="text-align: center"><img src="~/Image/@item.Book.Image" style="width: 70px;height: 80px;"></td>
-                        <td style="text-align: center;">@item.Quantity</td>
-                        <td style="text-align: center;">@item.Price</td>
-                        <td style="text-align: center;">@item.Subtotal</td>
-                    </tr>
-                }
-                <tr>
-                    <td colspan="5" align="right">
-                        <h3><b>TOTAL:</b></h3>
-                    </td>
-                    <td>
-                        <h3 style="color:red"><b>$ @Html.DisplayFor(model => model.TotalPrice)</b></h3>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="card-header py-3">
+        <h2 align="center"><b>Book details of the order</b></h2>
+        <hr />
     </div>
+    <table id="tablecategory" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th style="text-align: center;">OrderID</th>
+                <th style="text-align: center;">Book Name</th>
+                <th style="text-align: center;">Image</th>
+                <th style="text-align: center;">Quantity</th>
+                <th style="text-align: center;">Price</th>
+                <th style="text-align: center;">Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderDetails)
+            {
+                <tr>
+                    <td style="text-align: center;">@item.OrderID</td>
+                    <td style="text-align: center;">@item.Book.BookName</td>
+                    <td style="text-align: center"><img src="~/Image/@item.Book.Image" style="width: 70px;height: 80px;"></td>
+                    <td style="text-align: center;">@item.Quantity</td>
+                    <td style="text-align: center;">@item.Price</td>
+                    <td style="text-align: center;">@item.Subtotal</td>
+                </tr>
+            }
+            <tr>
+                <td colspan="5" align="right">
+                    <h3><b>TOTAL:</b></h3>
+                </td>
+                <td>
+                    <h3 style="color:red"><b>$ @Html.DisplayFor(model => model.TotalPrice)</b></h3>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
