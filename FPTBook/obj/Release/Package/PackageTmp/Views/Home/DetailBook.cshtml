@@ -4,6 +4,24 @@
     ViewBag.Title = @Model.BookName;
 }
 
+@if (ViewBag.Success != null)
+{
+    <script type="text/javascript">
+    window.onload = function () {
+        alert("@ViewBag.Success");
+    };
+    </script>
+}
+
+@if (ViewBag.LoginCart != null)
+{
+    <script type="text/javascript">
+    window.onload = function () {
+        alert("@ViewBag.LoginCart");
+        window.location = "/Account/SignIn";
+    };
+    </script>
+}
 <div class="container">
     <h1><u><b>Book Detail</b></u></h1>
     <br />
