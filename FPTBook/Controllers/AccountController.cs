@@ -44,8 +44,6 @@ namespace FPTBook.Controllers
                         {
                             // Add data into database
                             _account.Password = PasswordMD5(_account.Password);
-                            // ??????
-                            //_account.ConfirmPassword = PasswordMD5(_account.ConfirmPassword);
                             _db.Configuration.ValidateOnSaveEnabled = false;
                             _db.Accounts.Add(_account);
                             _db.SaveChanges();

@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
-https://go.microsoft.com/fwlink/?LinkID=208121. 
+https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project>
   <PropertyGroup>
-    <_PublishTargetUrl>E:\FPTBook</_PublishTargetUrl>
+    <_PublishTargetUrl>E:\OneDrive - Đại học FPT- FPT University\BTEC\1670 - APPLICATION DEVELOPMENT\FPTBookISS</_PublishTargetUrl>
+    <History>True|2022-06-22T05:39:43.1300210Z;True|2022-06-13T18:01:25.7507625+07:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
@@ -20,10 +21,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/10/2022 17:16:01</publishTime>
     </File>
     <File Include="bin/FPTBook.dll">
-      <publishTime>03/11/2022 08:43:53</publishTime>
+      <publishTime>06/22/2022 12:39:39</publishTime>
     </File>
     <File Include="bin/FPTBook.pdb">
-      <publishTime>03/11/2022 08:43:53</publishTime>
+      <publishTime>06/22/2022 12:39:39</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>03/05/2022 22:54:44</publishTime>
@@ -500,7 +501,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/09/2022 14:53:30</publishTime>
     </File>
     <File Include="Views/Home/DetailBook.cshtml">
-      <publishTime>03/11/2022 08:43:38</publishTime>
+      <publishTime>03/11/2022 08:46:43</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>03/10/2022 15:23:44</publishTime>
@@ -551,7 +552,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/05/2022 22:54:44</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/10/2022 19:21:13</publishTime>
+      <publishTime>06/22/2022 12:39:42</publishTime>
     </File>
   </ItemGroup>
 </Project>
