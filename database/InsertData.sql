@@ -1,7 +1,7 @@
 USE FPTBook
 GO
 
--- Xóa dữ liệu cũ nếu có (theo thứ tự khóa ngoại để không bị lỗi)
+-- Delete old data if exists (in order of foreign keys to avoid errors)
 DELETE FROM OrderDetail;
 DELETE FROM Orders;
 DELETE FROM Feedback;
@@ -12,53 +12,53 @@ DELETE FROM Publisher;
 DELETE FROM Account;
 GO
 
--- Reset Identity cho các bảng có cột Identity (nếu cần thiết)
+-- Reset Identity for tables with Identity columns (if necessary)
 DBCC CHECKIDENT ('Orders', RESEED, 0);
 DBCC CHECKIDENT ('Feedback', RESEED, 0);
 GO
 
--- 1. Thêm dữ liệu bảng Account
+-- 1. Insert data into Account table
 INSERT INTO Account (Username, Fullname, Password, Email, Telephone, Address, Role) VALUES
-('admin', N'Quản Trị Viên', '0e7517141fb53f21ee439b355b5a1d0a', 'admin@fptbook.com', '0123456789', N'Hà Nội', 1),
-('chiluan', N'Nguyễn Văn A', '0e7517141fb53f21ee439b355b5a1d0a', 'chiluan@gmail.com', '0987654321', N'Hồ Chí Minh', 0),
-('ngoctien', N'Trần Thị B', '0e7517141fb53f21ee439b355b5a1d0a', 'ngoctien@gmail.com', '0912345678', N'Đà Nẵng', 0);
+('admin', N'Administrator', '0e7517141fb53f21ee439b355b5a1d0a', 'admin@fptbook.com', '0123456789', N'Hanoi', 1),
+('chiluan', N'Chí Luân', '0e7517141fb53f21ee439b355b5a1d0a', 'chiluan@gmail.com', '0987654321', N'Ho Chi Minh City', 0),
+('ngoctien', N'Ngọc Tiên', '0e7517141fb53f21ee439b355b5a1d0a', 'ngoctien@gmail.com', '0912345678', N'Da Nang', 0);
 GO
 
--- 2. Thêm dữ liệu bảng Feedback
+-- 2. Insert data into Feedback table
 INSERT INTO Feedback (Username, Telephone, Email, Message, DateSend) VALUES
-('chiluan', '0987654321', 'chiluan@gmail.com', N'Website có giao diện đẹp và dễ sử dụng.', GETDATE()),
-('ngoctien', '0912345678', 'ngoctien@gmail.com', N'Sách công nghệ thông tin rất hữu ích, hy vọng có thêm sách chuyên ngành.', GETDATE());
+('chiluan', '0987654321', 'chiluan@gmail.com', N'The website has a beautiful interface and is easy to use.', GETDATE()),
+('ngoctien', '0912345678', 'ngoctien@gmail.com', N'The IT books are very useful, hope to have more specialized books.', GETDATE());
 GO
 
--- 3. Thêm dữ liệu bảng Category
+-- 3. Insert data into Category table
 INSERT INTO Category (CategoryID, CategoryName, Description) VALUES
-('CAT01', N'Công Nghệ Thông Tin', N'Sách về lập trình, phát triển phần mềm, quản trị mạng, blockchain...'),
-('CAT02', N'Kinh Tế & Kinh Doanh', N'Sách về quản lý tài chính, kinh doanh, đầu tư, bài học thành công...'),
-('CAT03', N'Tâm Lý & Kỹ Năng Sống', N'Sách về phát triển bản thân, kỹ năng sống, giao tiếp, tâm lý học...'),
-('CAT04', N'Giáo Dục & Sư Phạm', N'Sách hướng dẫn phương pháp học tập, giảng dạy hiệu quả.');
+('CAT01', N'Information Technology', N'Books on programming, software development, network administration, blockchain...'),
+('CAT02', N'Economics & Business', N'Books on financial management, business, investing, success lessons...'),
+('CAT03', N'Psychology & Life Skills', N'Books on personal development, life skills, communication, psychology...'),
+('CAT04', N'Education & Teaching', N'Books guiding effective study and teaching methods.');
 GO
 
--- 4. Thêm dữ liệu bảng Author
+-- 4. Insert data into Author table
 INSERT INTO Author (AuthorID, AuthorName, Description) VALUES
-('AUTH01', N'Robert T. Kiyosaki', N'Tác giả nổi tiếng với cuốn Cha Giàu Cha Nghèo.'),
-('AUTH02', N'Jon Galloway', N'Chuyên gia về công nghệ ASP.NET MVC.'),
-('AUTH03', N'David J. Schwartz', N'Tác giả cuốn Sự Kỳ Diệu Của Tư Duy Lớn.'),
-('AUTH04', N'Adam Grant', N'Nhà tâm lý học, tác giả cuốn Think Again.'),
-('AUTH05', N'Robert C. Martin', N'Chuyên gia phát triển phần mềm, tác giả cuốn Clean Code.'),
-('AUTH06', N'Daniel Imran', N'Chuyên gia công nghệ, tác giả cuốn Blockchain Basics.'),
-('AUTH07', N'Nhiều Tác Giả', N'Tập hợp từ nhiều tác giả và chuyên gia khác.');
+('AUTH01', N'Robert T. Kiyosaki', N'Famous author of Rich Dad Poor Dad.'),
+('AUTH02', N'Jon Galloway', N'Expert in ASP.NET MVC technology.'),
+('AUTH03', N'David J. Schwartz', N'Author of The Magic of Thinking Big.'),
+('AUTH04', N'Adam Grant', N'Psychologist, author of Think Again.'),
+('AUTH05', N'Robert C. Martin', N'Software development expert, author of Clean Code.'),
+('AUTH06', N'Daniel Imran', N'Technology expert, author of Blockchain Basics.'),
+('AUTH07', N'Various Authors', N'A collection from various authors and other experts.');
 GO
 
--- 5. Thêm dữ liệu bảng Publisher
+-- 5. Insert data into Publisher table
 INSERT INTO Publisher (PublisherID, PublisherName, Description) VALUES
-('PUB01', N'Wrox Press', N'Nhà xuất bản chuyên về sách công nghệ, lập trình.'),
-('PUB02', N'Plata Publishing', N'Nhà xuất bản các tựa sách kinh doanh, tài chính nổi tiếng.'),
-('PUB03', N'Prentice Hall', N'Nhà xuất bản chuyên cung cấp tài liệu giáo dục và học thuật.'),
-('PUB04', N'Penguin Books', N'Một trong những nhà xuất bản uy tín nhất thế giới.'),
-('PUB05', N'Independently Published', N'Sách được xuất bản độc lập hoặc bởi các nhà xuất bản nhỏ.');
+('PUB01', N'Wrox Press', N'Publisher specializing in technology and programming books.'),
+('PUB02', N'Plata Publishing', N'Publisher of famous business and finance books.'),
+('PUB03', N'Prentice Hall', N'Publisher providing educational and academic materials.'),
+('PUB04', N'Penguin Books', N'One of the most prestigious publishers in the world.'),
+('PUB05', N'Independently Published', N'Books published independently or by small publishers.');
 GO
 
--- 6. Thêm dữ liệu bảng Book (sử dụng tên ảnh trong FPTBook/Image)
+-- 6. Insert data into Book table (using image names in FPTBook/Image)
 INSERT INTO Book (BookID, BookName, CategoryID, AuthorID, PublisherID, Price, Quantity, Image, Description) VALUES
 ('B001', N'Blockchain Basics', 'CAT01', 'AUTH06', 'PUB05', 150000, 50, 'BlockchainBasics.jpg', N'A non-technical introduction in 25 steps.'),
 ('B002', N'Clean Code', 'CAT01', 'AUTH05', 'PUB03', 250000, 30, 'Clean-Code.jpg', N'A Handbook of Agile Software Craftsmanship.'),
@@ -78,14 +78,14 @@ INSERT INTO Book (BookID, BookName, CategoryID, AuthorID, PublisherID, Price, Qu
 ('B016', N'Wisdom of Insecurity', 'CAT03', 'AUTH07', 'PUB04', 130000, 50, 'Wisdom of Insecurity  A Message for an Age of Anxiety.jpg', N'A Message for an Age of Anxiety.');
 GO
 
--- 7. Thêm dữ liệu bảng Orders
+-- 7. Insert data into Orders table
 INSERT INTO Orders (Username, Telephone, Fullname, DeliveyAddress, OrderDate, TotalPrice) VALUES
-('chiluan', '0987654321', N'Nguyễn Văn A', N'Số 1, Lê Duẩn, Quận 1, TP HCM', GETDATE(), 400000),
-('ngoctien', '0912345678', N'Trần Thị B', N'Số 5, Nguyễn Văn Linh, Hải Châu, Đà Nẵng', GETDATE(), 300000);
+('chiluan', '0987654321', N'Nguyen Van A', N'No. 1, Le Duan, District 1, Ho Chi Minh City', GETDATE(), 400000),
+('ngoctien', '0912345678', N'Tran Thi B', N'No. 5, Nguyen Van Linh, Hai Chau, Da Nang', GETDATE(), 300000);
 GO
 
--- 8. Thêm dữ liệu bảng OrderDetail (Chú ý: OrderID là IDENTITY nên tự động tăng, ta giả sử 2 đơn vừa tạo có ID là 1 và 2)
--- Nếu DBCC CHECKIDENT đã được reset, đơn đầu tiên sẽ có ID = 1
+-- 8. Insert data into OrderDetail table (Note: OrderID is IDENTITY and auto-increments, assuming the 2 recently created orders have IDs 1 and 2)
+-- If DBCC CHECKIDENT was reset, the first order will have ID = 1
 INSERT INTO OrderDetail (OrderID, BookID, Quantity, Price, Subtotal) VALUES
 (1, 'B001', 1, 150000, 150000),
 (1, 'B002', 1, 250000, 250000),
